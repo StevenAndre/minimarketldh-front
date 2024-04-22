@@ -1,0 +1,18 @@
+
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="submit.php" method="POST">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username"  [(ngModel)]="loginReques.email" name="email" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" [(ngModel)]="loginReques.password" name="password" required>
+            </div>
+            <button (click)="login()" type="submit">Login</button>
+        </form>
+        <a [routerLink]="'/register'" >register</a>
+    </div>
+
+

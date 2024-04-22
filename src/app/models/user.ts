@@ -1,0 +1,9 @@
+import { Role } from "./role";
+
+export interface User{
+    name?:string;
+    lastname?:string;
+    email?:string;
+    username?:string;
+    
+}
