@@ -1,90 +1,40 @@
-<div class="main">
-    <h2>Registration Form</h2>
-    <form action="">
-        <label for="first"
-            >First Name:</label
-        >
-        <input
-            type="text"
-            id="first"
-            name="first"
-            required
-        />
+<section>
+    <div class="form-box">
+        <div class="form-value">
+            <form>
+                <h2>User Registration</h2>
 
-        <label for="last"
-            >Last Name:</label
-        >
-        <input
-            type="text"
-            id="last"
-            name="last"
-            required
-        />
+                <div class="inputbox">
+                    <input type="text" [(ngModel)]="user.name" name="name" required>
+                    <label>Name</label>
+                </div>
 
-        <label for="email">Email:</label>
-        <input
-            type="email"
-            id="email"
-            name="email"
-            required
-        />
+                <div class="inputbox">
+                    <input type="password" [(ngModel)]="user.password" name="password" required>
+                    <label>Password</label>
+                </div>
 
-        <label for="password"
-            >Password:</label
-        >
-        <input
-            type="password"
-            id="password"
-            name="password"
-            pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$"
-            title="Password must contain at least one number, 
-                   one alphabet, one symbol, and be at 
-                   least 8 characters long"
-            required
-        />
+                <div class="inputbox">
+                    <input type="text" [(ngModel)]="user.lastname" name="lastname">
+                    <label>Last Name</label>
+                </div>
 
-        <label for="repassword"
-            >Re-type Password:</label
-        >
-        <input
-            type="password"
-            id="repassword"
-            name="repassword"
-            required
-        />
+                <div class="inputbox">
+                    <input type="email" [(ngModel)]="user.email" name="email" required>
+                    <label>Email</label>
+                </div>
 
-        <label for="mobile"
-            >Contact:</label
-        >
-        <input
-            type="text"
-            id="mobile"
-            name="mobile"
-            maxlength="10"
-            required
-        />
+                <div class="inputbox">
+                    <input type="text" [(ngModel)]="user.username" name="username" required>
+                    <label>Username</label>
+                </div>
 
-        <label for="gender"
-            >Gender:</label
-        >
-        <select
-            id="gender"
-            name="gender"
-            required
-        >
-            <option value="male">
-                Male
-            </option>
-            <option value="female">
-                Female
-            </option>
-            <option value="other">
-                Other
-            </option>
-        </select>
+                <button (click)="register()" type="submit">Register</button>
 
-        <button type="submit">
-            Submit
-        </button>
-    </form>
-</div>
+                <div class="register">
+                    <p>Already have an account? <a routerLink="/login">Login here</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

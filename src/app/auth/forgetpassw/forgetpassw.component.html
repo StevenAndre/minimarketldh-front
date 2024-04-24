@@ -1,0 +1,39 @@
+<section>
+    <div class="form-box">
+        <div class="form-value">
+            <h2>Recuperar Contraseña</h2>
+            <!-- Paso 1: Solicitar Email -->
+            <form *ngIf="!sendCode"  (ngSubmit)="sendEmail()">
+                <div class="inputbox">
+                    <input type="email" required [(ngModel)]="email" name="email" >
+                    <label>Email</label>
+                </div>
+                <button type="submit">Enviar Email</button>
+            </form>
+
+            <!-- Paso 2: Solicitar Código de Confirmación -->
+            <form *ngIf="showCodeInput" (ngSubmit)="verifyCode()">
+                <div class="inputbox">
+                    <input type="text" required [(ngModel)]="confirmationCode" name="confirmationCode">
+                    <label>Código de Confirmación</label>
+                </div>
+                <button type="submit">Verificar Código</button>
+            </form>
+
+            <form *ngIf="changepsswInpu" (ngSubmit)="changePassword()" >
+                <div class="inputbox">
+                    <input type="password" required [(ngModel)]="password" name="password">
+                    <label>Porfavor introduzca su nueva contraseña</label>
+                </div>
+                <button type="submit">Cambiar Contraseña</button>
+            </form>
+
+            <!-- Mostrar mensaje de éxito -->
+          
+            <!-- Enlace para volver al login -->
+            <div class="register">
+                <p>Recuerdas tu contraseña? <a routerLink="/login">Inicia Sesión aquí</a></p>
+            </div>
+        </div>
+    </div>
+</section>

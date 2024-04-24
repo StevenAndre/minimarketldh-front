@@ -1,18 +1,31 @@
 
-    <div class="login-container">
-        <h2>Login</h2>
-        <form action="submit.php" method="POST">
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username"  [(ngModel)]="loginReques.email" name="email" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" [(ngModel)]="loginReques.password" name="password" required>
-            </div>
-            <button (click)="login()" type="submit">Login</button>
-        </form>
-        <a [routerLink]="'/register'" >register</a>
+   
+<section>
+    <div class="form-box">
+        <div class="form-value">
+            <form>
+                <h2>Login</h2>
+                <div class="inputbox">
+                    <input type="texr" required  [(ngModel)]="loginReques.email" name="email" >
+                    <label for="">Email o Username</label>
+                </div>
+                <div class="inputbox">
+    
+                    <input [(ngModel)]="loginReques.password" name="password" type="password" required >
+                    <label for="">Password</label>
+                </div>
+                <div class="forget">
+                    <label for="">
+                        <a routerLink="/forget" >Olvide mi Contraseña</a>
+                    </label>
+                  
+                </div>
+                <button (click)="login()">Login</button>
+                <div class="register">
+                    <p>No tienes una cuenta? <a routerLink="/register">Registrate aqui</a></p>
+                </div>
+            </form>
+        </div>
     </div>
-
-
+    
+</section>
