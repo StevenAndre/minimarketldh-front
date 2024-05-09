@@ -8,10 +8,22 @@
     </div>
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a  class="sidenav-nav-link" [routerLink]="[data.routerLink]">
+            <a class="sidenav-nav-link" (click)="desplegarSubmenu(data.label)" [routerLink]="[data.routerLink]">
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
-                <span *ngIf="collapsed" class="sidenav-link-text">{{data.label}}</span>
+                <span *ngIf="collapsed" class="sidenav-link-text"  >{{data.label}}</span>
+                <i  class="fas fa-angle-right" *ngIf="data.submenu && !data.submendesplegado && collapsed"  ></i>
+                <i  class="fas fa-angle-down" *ngIf="data.submenu && data.submendesplegado && collapsed"></i>
+    
             </a>
+            <ul  class="sidenav-nav-item-sm" *ngIf="data.submendesplegado" >
+                <li *ngFor="let subItem of data.submenu">
+                    <a class="sidenav-nav-link-sm" [routerLink]="[subItem.routerLink]">
+                        <i class="fas fa-caret-right"></i>
+                        <span *ngIf="collapsed" (click)="imprimirlabel(subItem.label)"  class="sidenav-link-text-sm" >{{subItem.label}}</span>
+                    </a>
+                </li>
+            </ul>
         </li>
     </ul>
+    
 </div>

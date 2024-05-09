@@ -21,7 +21,9 @@ export class SidebarComponent {
 
   @Output() onToggleSideNav: EventEmitter<SideNavToggle>= new EventEmitter();
   collapsed=false;
+  
   screenWidth=0;
+  labelanterior="";
   navData=navbarData;
 
   toggleCollapse():void{
@@ -31,8 +33,28 @@ export class SidebarComponent {
 
   closeCollapse():void{
     this.collapsed = false;
+    this.navData.forEach(item=>item.submendesplegado=false);
     this.onToggleSideNav.emit({collapsed:this.collapsed,screenWidth:this.screenWidth});
   }
 
+  toggleSubmenu(item: any) {
+    item.submenuOpen = !item.submenuOpen;
+}
+
+desplegarSubmenu(label:string){
+ 
+  const itemToUpdate = this.navData.find(item => item.label === label);
+        if (itemToUpdate) {
+          console.log(itemToUpdate);
+            itemToUpdate.submendesplegado=!itemToUpdate.submendesplegado;
+            console.log(itemToUpdate);
+            console.log(this.navData);
+        }
+  
+}
+
+imprimirlabel(label:string){
+  console.log("IMPRMENDO LABEL: "+label);
+}
 
 }

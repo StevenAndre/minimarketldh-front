@@ -1,4 +1,9 @@
 .sidenav{
+
+    overflow-y: hidden;
+
+
+
     background: #263238;
     transition: all .5s ease;
     position: relative;
@@ -29,6 +34,7 @@
 
         .logo-text{
             margin-left: 1.5rem;
+            margin-right: 1.5rem;
             font-size: 24px;
             font-weight: 700;
             color: #fff;
@@ -54,6 +60,58 @@
 
 .sidenav-collapsed{
     width: 16.5625rem;
+
+
+     /* Permitimos el desplazamiento vertical solo cuando la barra lateral está expandida */
+    overflow-y: auto;
+    /* Personalizamos el scrollbar */
+    scrollbar-width: thin;
+    scrollbar-color: #999999 transparent; /* Color de la barra y el fondo del scrollbar */
+
+    /* Estilos específicos para WebKit (Chrome, Safari, etc.) */
+    /* Ajustamos el tamaño del scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    /* Estilo del área de la barra desplazable */
+    ::-webkit-scrollbar-thumb {
+        background: #e1e1e1; /* Color del área desplazable */
+        border-radius: 10px; /* Borde redondeado */
+    }
+
+    /* Cambio de color al pasar el cursor sobre el área desplazable */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #ffffff;
+    }
+
+    /* Cambio de color al hacer clic en el área desplazable */
+    ::-webkit-scrollbar-thumb:active {
+        background: #000000;
+    }
+
+    /* Estilo de la pista (fondo) del scrollbar */
+    ::-webkit-scrollbar-track {
+        background: #666666;
+        border-radius: 10px; /* Borde redondeado */
+    }
+
+    /* Estilos adicionales al pasar el cursor sobre la pista del scrollbar */
+    ::-webkit-scrollbar-track:hover {
+        background: #666666;
+    }
+
+    /* Estilos al hacer clic en la pista del scrollbar */
+    ::-webkit-scrollbar-track:active {
+        background: #333333;
+    }
+
+    /* Eliminamos la esquina del scrollbar */
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+  
 }
 .sidenav-nav{
     list-style: none;
@@ -84,10 +142,11 @@
                 min-width: 2rem;
                 margin: 0 0.5rem;
             }
+            
 
             .sidenav-link-text{
                 margin-left: 1.5rem;
-               
+               margin-right: 1.5rem;
             }
 
         }
@@ -97,6 +156,48 @@
             background-color: #077bb6;
             color: #000;
         }
-    }//12.50 Animated Responsive Sidenav in Angular | Part 1 | Responsive Sidenav
+    }
+    //submenu
+    .sidenav-nav-item-sm{
+        width: 100%;
+        margin-bottom: 0.625rem;
+        list-style: none;
+        padding: 0; /* Elimina el espacio de relleno predeterminado */
+    margin: 0;
+     
+        .sidenav-nav-link-sm {
+            display: flex;
+            align-items: center;
+            height: 3rem;
+            color: #f3f3f3;
+            text-decoration: none;
+            border-radius: 0.625rem;
+            transition: all .3s ease;
+
+            .sidenav-link-icon-sm{
+                font-size: 22px;
+                width: 2rem;
+                min-width: 2rem;
+                margin: 0 0.5rem;
+            }
+            
+            i{
+                margin-left:1.5rem ;
+            }
+            .sidenav-link-text-sm{
+                margin-left: 1.5rem;
+               
+            }
+
+        }
+    }
+    .sidenav-nav-item-sm:hover {
+        .sidenav-nav-link {
+            background-color: #077bb6;
+            color: #000;
+        }
+    }
+
+
 }
 
