@@ -16,8 +16,8 @@ export class LoginRegisterServiceService {
   }
 
   login(logreq:loginDTO) :Observable<any> {
-
-     return this.http.post(`${this.baseURL}/auth/login`,logreq);
+  
+  return  this.http.post(`${this.baseURL}/auth/login`,logreq);
 
   }
 
@@ -37,5 +37,9 @@ export class LoginRegisterServiceService {
     return this.http.get(`${this.baseURL}/users/user-currenly`);
   }
 
+
+  getAllRoles():Observable<any>{
+    return this.http.get(`${this.baseURL}/roles/all`);
+  }
 
 }

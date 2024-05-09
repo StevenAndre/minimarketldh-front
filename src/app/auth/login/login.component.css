@@ -8,24 +8,38 @@ section{
     width: 100%;
    
 }
-
-.form-box{
+.form-box {
     position: relative;
     width: 400px;
     height: 450px;
     background: transparent;
-    border: 2px solid rgba(255, 255, 255, 5);
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Reduce la opacidad del borde */
     border-radius: 20px;
     backdrop-filter: blur(15px);
     display: flex;
     justify-content: center;
     align-items: center;
-
-}
+    overflow: hidden; /* Para ocultar el resplandor fuera del borde */
+  
+    /* Animación de destello */
+    animation: borderGlow 2s ease-in-out infinite;
+  }
+  
+  @keyframes borderGlow {
+    0% {
+      box-shadow: 0 0 10px rgba(229, 221, 221, 0.5); /* Resplandor inicial */
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(229, 221, 221, 0.671); /* Resplandor máximo a la mitad de la animación */
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(229, 221, 221, 0.881); /* Resplandor de regreso al estado inicial */
+    }
+  }
 
 h2{
     font-size: 2em;
-    color: #fff;
+    color: #8914bb;
     text-align: center;
 }
 
@@ -33,7 +47,7 @@ h2{
     position: relative ;
     margin: 30px 0;
     width: 310px;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #8914bb;
 
 }
 
@@ -42,7 +56,7 @@ h2{
     top: 50%;
     left: 5px;
     transform: translateY(-50%);
-    color: #fff;
+    color: #8914bb;
     font-size: 1em;
     pointer-events: none;
     transition: .5s;
@@ -61,13 +75,13 @@ top: -5px
     outline: none;
     font-size: 1em;
     padding:0 35px 0 5px;
-    color: #fff;
+    color: #8914bb;
 }
 
 .forget{
     margin: -15px 0 15px;
     font-size: .9em;
-    color: #FFF;
+    color: #8914bb;
     display: flex;
     justify-content: center;
    
@@ -86,7 +100,8 @@ button{
     width: 100%;
     height: 40px;
     border-radius: 40px;
-    background: #fff;
+    background: #1bd7de;
+    color: #8914bb;
     border: none;
     outline: none;
     cursor: pointer;
@@ -97,7 +112,7 @@ button{
 
 .register{
     font-size: .9em;
-    color: #FFF;
+    color: #8914bb;
     text-align: center;
     text-align: center;
     margin: 25px 0 10px;

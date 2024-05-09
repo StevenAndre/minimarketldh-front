@@ -2,7 +2,8 @@
 
 *{
     
-    background: #00ff00;
-    background: url("/assets/images/wallpaperflare.com_wallpaper.jpg")no-repeat;
+    --background: rgb(195,12,207);
+    --background: linear-gradient(90deg, rgba(195,12,207,1) 0%, rgba(16,16,168,1) 21%, rgba(44,49,143,1) 36%, rgba(103,42,149,1) 50%, rgba(187,27,183,1) 68%, rgba(208,63,97,1) 85%, rgba(255,0,0,1) 100%);
+    background: url("/assets/images/SL-120722-54400-35.jpg")no-repeat;
     background-size: cover;
 }
