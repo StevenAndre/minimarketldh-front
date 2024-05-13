@@ -7,9 +7,11 @@ import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/
 import { authInterceptor } from './service/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SpinnerInterceptor } from './service/spinner.interceptor';
-
+import { provideOAuthClient } from 'angular-oauth2-oidc';
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor,SpinnerInterceptor])), provideAnimationsAsync(),
+    provideOAuthClient()
+    
   ]
 };

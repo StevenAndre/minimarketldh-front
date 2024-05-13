@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { loginDTO } from '../models/login';
 import { User } from '../models/user';
+import { UserRegister } from '../models/userRegisterAdmin';
 
 
 @Injectable({
@@ -24,6 +25,11 @@ export class LoginRegisterServiceService {
   register(user:User):Observable<any>{
     return this.http.post(`${this.baseURL}/auth/register`,user);
   }
+
+  registerByAdmin(user:UserRegister):Observable<any>{
+    return this.http.post(`${this.baseURL}/users/register/byadmin`,user);
+  }
+  
 
   saveToken(token:string){
     localStorage.setItem('token', token);

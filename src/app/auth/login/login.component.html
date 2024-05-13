@@ -1,31 +1,30 @@
-
-   
 <section>
     <div class="form-box">
         <div class="form-value">
             <form>
                 <h2>Login</h2>
                 <div class="inputbox">
-                    <input type="texr" required  [(ngModel)]="loginReques.email" name="email" >
+                    <input type="text" required [(ngModel)]="loginReques.email" name="email">
                     <label for="">Email o Username</label>
                 </div>
                 <div class="inputbox">
-    
-                    <input [(ngModel)]="loginReques.password" name="password" type="password" required >
+                    <input [(ngModel)]="loginReques.password" name="password" type="password" required>
                     <label for="">Password</label>
                 </div>
                 <div class="forget">
-                    <label for="">
-                        <a routerLink="/forget" >Olvide mi Contraseña</a>
+                    <label>
+                        <a routerLink="/forget">Olvidé mi Contraseña</a>
                     </label>
-                  
                 </div>
                 <button (click)="login()">Login</button>
                 <div class="register">
-                    <p>No tienes una cuenta? <a routerLink="/register">Registrate aqui</a></p>
+                    <p>No tienes una cuenta? <a routerLink="/register">Regístrate aquí</a></p>
                 </div>
+
+                <!-- Botón para Entrar con Google -->
+                <button class="google-login"  (click)="loginOauth2()"> Entrar con Google </button>
+
             </form>
         </div>
     </div>
-    
 </section>

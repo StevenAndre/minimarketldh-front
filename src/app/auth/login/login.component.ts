@@ -5,6 +5,8 @@ import { LoginRegisterServiceService } from '../../service/login-register-servic
 import { Router, RouterModule } from '@angular/router';
 import { NgIconComponent, NgIconsModule, provideIcons } from '@ng-icons/core';
 import Swal from 'sweetalert2';
+import { OauthGoogleService } from '../../service/oauth-google.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,9 @@ import Swal from 'sweetalert2';
 })
 export class LoginComponent {
 
-  constructor(private loginser:LoginRegisterServiceService, private router:Router){
+  constructor(private loginser:LoginRegisterServiceService, private router:Router,
+    private oauthservice:OauthGoogleService
+  ){
 
   }
 
@@ -56,6 +60,10 @@ export class LoginComponent {
     });    
 
     this.loginReques=new loginDTO();
+  }
+
+  loginOauth2(){
+    this.oauthservice.login();
   }
 
 

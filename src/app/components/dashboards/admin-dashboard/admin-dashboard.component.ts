@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { LoginRegisterServiceService } from '../../../service/login-register-service.service';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
+import { OauthGoogleService } from '../../../service/oauth-google.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -12,7 +13,7 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 })
 export class AdminDashboardComponent  implements OnInit{
   
-  constructor(private logser:LoginRegisterServiceService){}
+  constructor(private logser:LoginRegisterServiceService,private oautservice:OauthGoogleService){}
 
   name:string="";
 
@@ -22,15 +23,13 @@ export class AdminDashboardComponent  implements OnInit{
   ngOnInit(): void {
 
    
-    
-    this.logser.getUSerActual().subscribe({
-      next:(data) => {
-        console.log("ROLES: "+data);
-        this.roles=data;
-      },
-      error:(err) =>console.log(err)
-    });
+     
 
+  }
+
+  showdata(){
+    const data=JSON.stringify(this.oautservice.getProfile());
+    console.log("DATA OAURH DOS=>"+data);
   }
 
 }
