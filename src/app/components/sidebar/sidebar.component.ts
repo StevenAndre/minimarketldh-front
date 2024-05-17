@@ -2,7 +2,7 @@ import { NgClass, NgFor, NgIf } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { navbarData } from './nav-data';
 import { RouterLink } from '@angular/router';
-
+import { ScrollPanelModule } from 'primeng/scrollpanel';
 
 interface SideNavToggle{
   screenWidth:number;
@@ -12,7 +12,7 @@ interface SideNavToggle{
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [NgFor,RouterLink,NgIf,NgClass],
+  imports: [NgFor,RouterLink,NgIf,NgClass,ScrollPanelModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

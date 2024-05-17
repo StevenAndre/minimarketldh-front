@@ -1,4 +1,5 @@
 <div class="sidenav" [ngClass]="collapsed ? 'sidenav-collapsed':''">
+    
     <div class="logo-container">
         <button class="logo" (click)="toggleCollapse()" >A</button>
         <div class="logo-text" *ngIf="collapsed"  >Minimarket</div>
@@ -8,13 +9,16 @@
     </div>
     <ul class="sidenav-nav">
         <li class="sidenav-nav-item" *ngFor="let data of navData">
-            <a class="sidenav-nav-link" (click)="desplegarSubmenu(data.label)" >
+            <a class="sidenav-nav-link" *ngIf="data.submenu" (click)="desplegarSubmenu(data.label)" >
                 <i class="sidenav-link-icon" [class]="data.icon"></i>
                 <span *ngIf="collapsed" class="sidenav-link-text"  >{{data.label}}</span>
                 <i  class="fas fa-angle-right" *ngIf="data.submenu && !data.submendesplegado && collapsed"  ></i>
                 <i  class="fas fa-angle-down" *ngIf="data.submenu && data.submendesplegado && collapsed"></i>
-    
             </a>
+             <a class="sidenav-nav-link" *ngIf="!data.submenu" [routerLink]="[data.routerLink]">
+                <i class="sidenav-link-icon" [class]="data.icon"></i>
+                <span *ngIf="collapsed" class="sidenav-link-text"  >{{data.label}}</span>
+            </a> 
             <ul   *ngIf="data.submendesplegado && collapsed" >
                 <li class="sidenav-nav-item-sm" *ngFor="let subItem of data.submenu">
                     <a class="sidenav-nav-link-sm" [routerLink]="[subItem.routerLink]">
@@ -25,5 +29,5 @@
             </ul>
         </li>
     </ul>
-    
+
 </div>

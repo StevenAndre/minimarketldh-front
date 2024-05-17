@@ -22,7 +22,7 @@ export class AdminDashboardComponent  implements OnInit{
   
   ngOnInit(): void {
 
-   
+  this.showdata();
      
 
   }
@@ -30,6 +30,7 @@ export class AdminDashboardComponent  implements OnInit{
   showdata(){
     const data=JSON.stringify(this.oautservice.getProfile());
     console.log("DATA OAURH DOS=>"+data);
+  
   }
 
 }

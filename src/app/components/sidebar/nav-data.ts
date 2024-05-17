@@ -34,7 +34,7 @@ export const navbarData=[
                 label: 'Registrar usuario'
             },
             {
-                routerLink: 's',
+                routerLink: '/dashboard/admin-dashboard/list-users',
                 label: 'Ver usuarios'
             }
         ]
