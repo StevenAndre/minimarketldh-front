@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat',sans-serif;
+}
+
+main{
+    width: 90%;
+    border: 1px solid red;
+    margin: 0 auto;
+}
+
+.list{
+    padding: 3rem;
+}
+
+.line{
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.3rem;
+}
