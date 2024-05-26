@@ -82,7 +82,7 @@ export const navbarData=[
                 label: 'Productos'
             },
             {
-                routerLink: '/dashboard/admin-dashboard/brans',
+                routerLink: '/dashboard/admin-dashboard/brands',
                 label: 'Marcas'
             },
             {
@@ -96,6 +96,20 @@ export const navbarData=[
         icon: 'fas fa-calculator',
         label: 'Compras',
         submendesplegado:false,
+        submenu: [
+            {
+                routerLink: '/dashboard/admin-dashboard/purchase',
+                label: 'Compras'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/proveedores',
+                label: 'Proveedores'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/rubros',
+                label: 'Rubros'
+            },
+        ]
     },
     {
         routerLink:'dashboard',

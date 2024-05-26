@@ -13,6 +13,13 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ListUsersComponent } from './components/dashboards/list-users/list-users.component';
 import { CustomerListComponent } from './components/dashboards/customer-list/customer-list.component';
 import { CustomerRegisterComponent } from './components/dashboards/customer-register/customer-register.component';
+import { ListComprasComponent } from './components/dashboards/compras/list-compras/list-compras.component';
+import { ListProveedoresComponent } from './components/dashboards/proveedores/list-proveedores/list-proveedores.component';
+import { ListRubrosComponent } from './components/dashboards/rubros/list-rubros/list-rubros.component';
+import { ProductListComponent } from './components/dashboards/productos/product-list/product-list.component';
+import { ListMarcasComponent } from './components/dashboards/productos/list-marcas/list-marcas.component';
+import { ListCategoriasComponent } from './components/dashboards/productos/list-categorias/list-categorias.component';
+import { ListUnidadesComponent } from './components/dashboards/productos/list-unidades/list-unidades.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -24,7 +31,14 @@ export const routes: Routes = [
             {path:'register-user',component:UserRegisterComponent},
             {path:'list-users',component:ListUsersComponent},
             {path:'list-customer',component:CustomerListComponent},
-            {path:'register-customer',component:CustomerRegisterComponent}
+            {path:'register-customer',component:CustomerRegisterComponent},
+            {path:'purchase',component:ListComprasComponent},
+            {path:'proveedores',component:ListProveedoresComponent},
+            {path:'rubros',component:ListRubrosComponent},
+            {path:'products',component:ProductListComponent},
+            {path:'brands',component:ListMarcasComponent},
+            {path:'categories',component:ListCategoriasComponent},
+            {path:'units',component:ListUnidadesComponent},
         ]},
         {path:'user-dashboard',component:UserDashboardComponent},
         {path:'cajero-dashboard',component:CajeroDashboardComponent},
