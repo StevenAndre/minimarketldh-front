@@ -1,0 +1,41 @@
+<div class="card">
+    <p-toolbar>
+      <div class="p-toolbar-group-start">
+        <p-button icon="pi pi-plus" class="mr-2"></p-button>
+        <p-button icon="pi pi-print" class="mr-2"></p-button>
+        <p-button icon="pi pi-upload"></p-button>
+      </div>
+      <div class="p-toolbar-group-center">
+        <span class="p-input-icon-left">
+          <i class="pi pi-search"></i>
+          <input pInputText placeholder="Search" />
+        </span>
+      </div>
+      <div class="p-toolbar-group-end">
+        <p-splitButton label="Save" icon="pi pi-check" [model]="items"></p-splitButton>
+      </div>
+    </p-toolbar>
+  </div>
+  
+  <div class="container">
+    <h1>Lista de Clientes</h1>
+    <div class="user-list">
+      <div class="user-row" *ngFor="let customer of customers">
+        <div class="user-column"><strong>Name:</strong> {{ customer.name }}</div>
+        <div class="user-column"><strong>Email:</strong> {{ customer.email }}</div>
+        <div class="user-column"><strong>Lastname:</strong> {{ customer.lastname }}</div>
+        <div class="user-column"><strong>Phone:</strong> {{ customer.phone }}</div>
+        <div class="user-column"><strong>Address:</strong> {{ customer.address }}</div>
+        <div class="user-column"><strong>Documento:</strong>
+          <ng-container >
+            <span class="role">{{ customer.document}}</span>
+          </ng-container>
+        </div>
+        <div class="user-column actions">
+          <button class="edit-btn">Edit</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

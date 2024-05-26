@@ -47,6 +47,22 @@ export const navbarData=[
     },
     {
         routerLink:'dashboard',
+        icon: 'far fa-address-book',
+        submendesplegado:false,
+        label: 'Clientes',
+        submenu: [
+            {
+                routerLink: '/dashboard/admin-dashboard/register-customer',
+                label: 'Registrar cliente'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/list-customer',
+                label: 'Ver clientes'
+            }
+        ]
+    },
+    {
+        routerLink:'dashboard',
         icon: 'far fa-file-pdf',
         label: 'Reportes',
         submendesplegado:false,
@@ -75,12 +91,7 @@ export const navbarData=[
         label: 'Pedidos',
         submendesplegado:false,
     },
-    {
-        routerLink:'dashboard',
-        icon: 'far fa-address-book',
-        submendesplegado:false,
-        label: 'Clientes'
-    },
+    
 
 
 

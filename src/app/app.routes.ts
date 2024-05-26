@@ -11,6 +11,8 @@ import { ForgetpasswComponent } from './auth/forgetpassw/forgetpassw.component';
 import { UserRegisterComponent } from './components/dashboards/user-register/user-register.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { ListUsersComponent } from './components/dashboards/list-users/list-users.component';
+import { CustomerListComponent } from './components/dashboards/customer-list/customer-list.component';
+import { CustomerRegisterComponent } from './components/dashboards/customer-register/customer-register.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -20,7 +22,9 @@ export const routes: Routes = [
     {path:'dashboard',component:MainpageComponent,children:[
         {path:'admin-dashboard',component:AdminDashboardComponent,children:[
             {path:'register-user',component:UserRegisterComponent},
-            {path:'list-users',component:ListUsersComponent}
+            {path:'list-users',component:ListUsersComponent},
+            {path:'list-customer',component:CustomerListComponent},
+            {path:'register-customer',component:CustomerRegisterComponent}
         ]},
         {path:'user-dashboard',component:UserDashboardComponent},
         {path:'cajero-dashboard',component:CajeroDashboardComponent},

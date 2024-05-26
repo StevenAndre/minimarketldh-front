@@ -1,57 +1,40 @@
-
 <div class="card">
-    <p-toolbar>
+  <p-toolbar>
     <div class="p-toolbar-group-start">
-        <p-button icon="pi pi-plus" class="mr-2"/>
-        <p-button icon="pi pi-print" class="mr-2"/>
-        <p-button icon="pi pi-upload" />
+      <p-button icon="pi pi-plus" class="mr-2"></p-button>
+      <p-button icon="pi pi-print" class="mr-2"></p-button>
+      <p-button icon="pi pi-upload"></p-button>
     </div>
     <div class="p-toolbar-group-center">
-        <span class="p-input-icon-left">
-            <i class="pi pi-search"></i>
-            <input pInputText placeholder="Search" />
-        </span>
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+        <input pInputText placeholder="Search" />
+      </span>
     </div>
     <div class="p-toolbar-group-end">
-        <p-splitButton label="Save" icon="pi pi-check" [model]="items" />
+      <p-splitButton label="Save" icon="pi pi-check" [model]="items"></p-splitButton>
     </div>
-    </p-toolbar>
-    </div>
+  </p-toolbar>
+</div>
 
-<div class="mat-elevation-z8">
-    <table mat-table [dataSource]="dataSource">
-  
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> Id </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-      </ng-container>
-  
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-      </ng-container>
-  
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-      </ng-container>
-  
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-                   showFirstLastButtons
-                   aria-label="Select page of periodic elements">
-    </mat-paginator>
+<div class="container">
+  <h1>Lista de Usuarios</h1>
+  <div class="user-list">
+    <div class="user-row" *ngFor="let user of users">
+      <div class="user-column"><strong>Name:</strong> {{ user.name }}</div>
+      <div class="user-column"><strong>Email:</strong> {{ user.email }}</div>
+      <div class="user-column"><strong>Lastname:</strong> {{ user.lastname }}</div>
+      <div class="user-column"><strong>Phone:</strong> {{ user.phone }}</div>
+      <div class="user-column"><strong>Address:</strong> {{ user.address }}</div>
+      <div class="user-column"><strong>Roles:</strong>
+        <ng-container *ngFor="let role of user.roles">
+          <span class="role">{{ role.role_name+"" | roleTransformPipe }}</span>
+        </ng-container>
+      </div>
+      <div class="user-column actions">
+        <button class="edit-btn">Edit</button>
+        <button class="delete-btn">Delete</button>
+      </div>
+    </div>
   </div>
-  
+</div>
