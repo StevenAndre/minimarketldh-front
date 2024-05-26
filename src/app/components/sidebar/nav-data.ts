@@ -72,6 +72,24 @@ export const navbarData=[
         icon: 'fas fa-box-open',
         label: 'Productos',
         submendesplegado:false,
+        submenu: [
+            {
+                routerLink: '/dashboard/admin-dashboard/categories',
+                label: 'Categorias'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/products',
+                label: 'Productos'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/brans',
+                label: 'Marcas'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/units',
+                label: 'Unidades de medida'
+            }
+        ]
     },
     {
         routerLink:'dashboard',
