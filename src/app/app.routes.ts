@@ -20,6 +20,7 @@ import { ProductListComponent } from './components/dashboards/productos/product-
 import { ListMarcasComponent } from './components/dashboards/productos/list-marcas/list-marcas.component';
 import { ListCategoriasComponent } from './components/dashboards/productos/list-categorias/list-categorias.component';
 import { ListUnidadesComponent } from './components/dashboards/productos/list-unidades/list-unidades.component';
+import { MainDashboardComponent } from './components/dashboards/main-dashboard/main-dashboard.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -39,6 +40,7 @@ export const routes: Routes = [
             {path:'brands',component:ListMarcasComponent},
             {path:'categories',component:ListCategoriasComponent},
             {path:'units',component:ListUnidadesComponent},
+            {path:'main',component:MainDashboardComponent}
         ]},
         {path:'user-dashboard',component:UserDashboardComponent},
         {path:'cajero-dashboard',component:CajeroDashboardComponent},

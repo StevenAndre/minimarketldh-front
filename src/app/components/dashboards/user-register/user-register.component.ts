@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { UserRegister } from '../../../models/userRegisterAdmin';
 import { LoginRegisterServiceService } from '../../../service/login-register-service.service';
 import { RoleTransformPipePipe } from '../../../pipes/role-transform-pipe.pipe';
@@ -23,7 +23,7 @@ import Swal from 'sweetalert2';
 })
 export class UserRegisterComponent implements OnInit {
 
-  constructor(private logser:LoginRegisterServiceService){
+  constructor(private logser:LoginRegisterServiceService,private router:Router){
     
   }
   dropdownList:any = [];
@@ -86,6 +86,7 @@ export class UserRegisterComponent implements OnInit {
         next:(res:any)=>{
           console.log(res);
           Swal.fire('Registro Exitoso','El usuario fue registrado con exito','success');
+          this.router.navigate(['/dashboard/admin-dashboard/list-users']);
           
       },error:err=>{
         Swal.fire('Vaya :( Lo sentimos, parece que ocurrio un error ',err.error.message,'error');

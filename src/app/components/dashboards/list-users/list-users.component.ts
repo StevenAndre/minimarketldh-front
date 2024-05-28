@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ViewChild,OnInit } from '@angular/core';
+import {AfterViewInit, Component, ViewChild,OnInit, TemplateRef } from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import { MenuItem } from 'primeng/api';
@@ -9,29 +9,39 @@ import { InputTextModule } from 'primeng/inputtext';
 import { UserServiceService } from '../../../service/user-service.service';
 import { Role } from '../../../models/role';
 import { FormsModule } from '@angular/forms';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { RoleTransformPipePipe } from '../../../pipes/role-transform-pipe.pipe';
-
+import { Router } from '@angular/router';
+import { UserRegister } from '../../../models/userRegisterAdmin';
+import { BsModalRef, BsModalService } from "ngx-bootstrap/modal";
+import { Injectable, Inject, forwardRef } from '@angular/core';
+import { EditUserComponent } from '../edit-user/edit-user.component';
 @Component({
   selector: 'app-list-users',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule,ToolbarModule, ButtonModule, SplitButtonModule, InputTextModule,FormsModule,NgFor,NgIf,RoleTransformPipePipe],
+  imports: [MatTableModule, MatPaginatorModule,ToolbarModule,
+    NgClass,
+    ButtonModule, SplitButtonModule, InputTextModule,FormsModule,NgFor,NgIf,RoleTransformPipePipe,EditUserComponent],
   templateUrl: './list-users.component.html',
   styleUrl: './list-users.component.css'
 })
 export class ListUsersComponent implements AfterViewInit,OnInit  {
 
-  constructor(private userService:UserServiceService){
+  constructor(private userService:UserServiceService, private router:Router,
+    //@Inject(forwardRef(() => BsModalService))private modalService: BsModalService
+  ){
    
 
   }
 
+
   users:UserDto[]=[];
-
-
+  modalRef?: BsModalRef;
+  isVisible:boolean=false;
+  user:UserRegister= new UserRegister();
   displayedColumns: string[] = ['user_id', 'name', 'lastname', 'email','address'];
   dataSource = new MatTableDataSource<UserDto>(this.users);
-
+  userID!:string;
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
 
@@ -64,6 +74,28 @@ export class ListUsersComponent implements AfterViewInit,OnInit  {
             }
         ];
     }
+
+    redirectRegister(){
+      this.router.navigate(['/dashboard/admin-dashboard/register-user']);
+    }
+
+    openModal(viewUserTemplate: TemplateRef<any>, userId: string) {
+      if (userId) {
+        
+       // this.modalRef = this.modalService.show(viewUserTemplate);
+      }
+    }
+
+    editModal(userId:string){
+      this.userID=userId;
+      alert('USER ID:'+userId);
+      this.isVisible=true;
+      
+    
+    }
+  closeModal(){
+    this.isVisible=false;
+  }
 
 }
 

@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="title">Editar datos del usuario</div>
+    <div class="content">
+      <form  #userForm="ngForm">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Nombre</span>
+            <input type="text" id="name" name="name" [(ngModel)]="user.name"   placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Apellido</span>
+            <input type="text" id="lastname" name="lastname" [(ngModel)]="user.lastname"  placeholder="Enter your lastname" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" id="username" name="username" [(ngModel)]="user.username" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" id="email" name="email" [(ngModel)]="user.email" placeholder="Enter your email" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Número de telefono</span>
+            <input type="text" id="phone" name="phone" [(ngModel)]="user.phone"  placeholder="Enter your number" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Dirección</span>
+            <input type="text" id="address" name="address" [(ngModel)]="user.address"  placeholder="Enter your address" required>
+          </div>
+          <!-- <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" id="password" name="password" [(ngModel)]="user.password"  placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input name="confirmPassword" type="password" [(ngModel)]="confirmPassword" placeholder="Confirm your password" required>
+          </div> -->
+        </div>
+          <div class="roles-box">
+            <label>Roles:</label>
+            <!-- <ng-multiselect-dropdown
+    [placeholder]="'Selecciona los roles'"
+    [settings]="dropdownSettings"
+    [data]="dropdownList"
+    [(ngModel)]="selectedItems"
+    (onSelect)="onItemSelect($event)"
+    (onSelectAll)="onSelectAll($event)"
+    (onDeSelect)="onItemDeSelect($event)"
+    (onDeSelectAll)="onDeSelectAll()"
+  
+  >
+  </ng-multiselect-dropdown>
+             -->
+          </div>
+            
+      
+        <div class="button">
+          <button type="submit" 
+           
+          value="Registrar">Actualizar</button>
+        </div>
+      </form>
+    </div>
+  </div>

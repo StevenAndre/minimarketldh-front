@@ -1,0 +1,8 @@
+import { Role } from "./role";
+export class UserUpdate {
+    name: string="";
+    lastname: string="" 
+    phone:string="";
+    address:string="";
+    roles: Role[]=[];
+  }

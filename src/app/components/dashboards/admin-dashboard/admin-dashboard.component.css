@@ -2,7 +2,9 @@
 .dashboard-container {
     display: flex;
     height: 100vh; /* Ajustar la altura del contenedor al 100% del viewport */
+   
 }
+
 
 /* Estilos para el sidebar */
 .sidebar {
@@ -53,8 +55,9 @@
     padding: 20px;
     overflow-y: auto;
     display: grid;
-    grid-template-columns: 250px 1fr; /* Sidebar fijo de 250px y contenido flexible */
-    gap: 20px;
+    /* grid-template-columns: 250px 1fr; /* Sidebar fijo de 250px y contenido flexible */
+   /* gap: 20px; */
+    justify-content: center;
 }
 
 .card {

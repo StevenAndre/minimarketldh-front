@@ -1,6 +1,6 @@
 export const navbarData=[
     {
-        routerLink:'/dashboard/admin-dashboard',
+        routerLink:'/dashboard/admin-dashboard/main',
         icon: 'fal fa-home',
         label: 'Dashboard',
         submendesplegado:false
