@@ -48,8 +48,6 @@ export class LoginRegisterServiceService {
     return this.http.get(`${this.baseURL}/roles/all`);
   }
 
-  getUserByID(userID:string):Observable<any>{
-    return this.http.get(`${this.baseURL}/${userID}`);
-  }
+ 
 
 }

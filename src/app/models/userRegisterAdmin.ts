@@ -1,3 +1,4 @@
+import { Role } from "./role";
 export class UserRegister {
     name: string="";
     email:string = "";
@@ -7,4 +8,13 @@ export class UserRegister {
     phone:string="";
     address:string="";
     roles: number[]=[];
+  }
+
+
+  export class UserUpdate {
+    name: string="";
+    lastname: string="" 
+    phone:string="";
+    address:string="";
+    roles: Role[]=[];
   }

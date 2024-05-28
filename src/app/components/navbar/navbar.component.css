@@ -13,6 +13,10 @@
     color: #fff;
     text-decoration: none;
   }
+  .logo {
+    display: flex ;
+    align-items: center;
+  }
   
   
 .logo-image {
