@@ -8,10 +8,18 @@ import { authInterceptor } from './service/auth.interceptor';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SpinnerInterceptor } from './service/spinner.interceptor';
 import { provideOAuthClient } from 'angular-oauth2-oidc';
+import { IMAGE_CONFIG } from '@angular/common';
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
     provideHttpClient(withInterceptors([authInterceptor,SpinnerInterceptor])), provideAnimationsAsync(),
-    provideOAuthClient()
+    provideOAuthClient(),
+    {
+      provide: IMAGE_CONFIG,
+      useValue: {
+        disableImageSizeWarning: true, 
+        disableImageLazyLoadWarning: true
+      }
+    },
     
   ]
 };

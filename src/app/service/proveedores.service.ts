@@ -40,6 +40,8 @@ export class ProveedoresService {
     return this.http.delete(`${this.baseURLSuppliers}/delete/${document}`);
   }
 
+  
+
 
 
 }

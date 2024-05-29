@@ -1,1 +1,255 @@
-<p>register-product works!</p>
+<div *ngIf="!isEdit && !detail" class="container mx-auto p-8 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-semibold mb-6 text-blue-700">Registrar nuevo Producto</h1>
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- Nombre del Producto -->
+      <div class="mb-4">
+        <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+        <input
+          type="text"
+          id="name"
+          formControlName="name"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          placeholder="Ingrese el nombre del producto"
+        />
+      </div>
+      
+      <!-- Descripción -->
+      <div class="mb-4">
+        <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          placeholder="Ingrese la descripción"
+        ></textarea>
+      </div>
+      
+      <!-- Precio -->
+      <div class="mb-4">
+        <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>
+        <input
+          type="number"
+          id="price"
+          formControlName="price"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          placeholder="Ingrese el precio"
+        />
+      </div>
+      
+      <!-- Categoría -->
+      <div class="mb-4">
+        <label for="category" class="block text-sm font-medium text-gray-700">Categoría</label>
+        <select
+          id="category"
+          formControlName="category"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option *ngFor="let category of categories" [value]="category.category_id">{{ category.name }}</option>
+        </select>
+      </div>
+      
+      <!-- Marca -->
+      <div class="mb-4">
+        <label for="brand" class="block text-sm font-medium text-gray-700">Marca</label>
+        <select
+          id="brand"
+          formControlName="brand"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option *ngFor="let brand of brands" [value]="brand.brand_id">{{ brand.name }}</option>
+        </select>
+      </div>
+      
+      <!-- Unidad -->
+      <div class="mb-4">
+        <label for="unit" class="block text-sm font-medium text-gray-700">Unidad</label>
+        <select
+          id="unit"
+          formControlName="unit"
+          class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+        >
+          <option *ngFor="let unit of units" [value]="unit.unit_id">{{ unit.description }}</option>
+        </select>
+      </div>
+      
+      <!-- Imagen y Previsualización -->
+      <div class="mb-4 md:col-span-2 flex items-center space-x-4">
+        <div class="w-1/2">
+          <label for="image" class="block text-sm font-medium text-gray-700">Imagen</label>
+          <input
+            type="file"
+            id="image"
+            (change)="onFileSelected($event)"
+            class="mt-1 block w-full text-gray-700 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
+        <div class="w-1/2 flex justify-center">
+          <img *ngIf="imagePreview" [src]="imagePreview" alt="Imagen Previa" class="w-20 h-20 object-contain border border-gray-300 rounded-md shadow-sm"/>
+        </div>
+      </div>
+      
+      <!-- Botón de Guardar -->
+      <div class="md:col-span-2 flex justify-end">
+        <button
+          type="submit"
+          class="px-6 py-3 bg-green-500 text-white font-semibold rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+        >
+          Guardar
+        </button>
+      </div>
+      
+    </form>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+  <div *ngIf="isEdit" class="container mx-auto w-[800px]  p-8 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-semibold mb-6 text-blue-700">Actualizar Producto</h1>
+    <form (ngSubmit)="update()" class="flex flex-wrap">
+      <!-- Imagen del Producto -->
+      <div class="w-full md:w-1/2 p-4 flex justify-center items-center">
+        <img [src]="imageProduct" alt="Imagen del Producto" class="w-48 h-48 object-contain border border-gray-300 rounded-md shadow-sm"/>
+        <!-- Input para la imagen -->
+        <div class="absolute mt-72">
+            <label for="image" class="block text-sm font-medium text-gray-700">Cambiar Imagen?</label>
+            <input
+              type="file"
+              id="image"
+              (change)="onFIleSelectUpdate($event)"
+              class="mt-1 block w-full text-gray-700 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            />
+          </div>
+      </div>
+      
+      <!-- Campos del Producto -->
+      <div class="w-full md:w-1/2 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Nombre del Producto -->
+        <div class="mb-4 ">
+          <label for="name" class="block text-sm font-medium text-gray-700">Nombre</label>
+          <input
+            type="text"
+            name="name"
+            [(ngModel)]="productUP.name"
+            class="mt-1 block w-[300px] px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="Ingrese el nombre del producto"
+          />
+        </div>
+        
+        <!-- Descripción -->
+        <div class="mb-4 col-span-2">
+          <label for="description" class="block text-sm font-medium text-gray-700">Descripción</label>
+          <textarea
+            name="description"
+            [(ngModel)]="productUP.description"
+            class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="Ingrese la descripción"
+          ></textarea>
+        </div>
+        
+        <!-- Precio -->
+        <div class="mb-4">
+          <label for="price" class="block text-sm font-medium text-gray-700">Precio</label>
+          <input
+            type="number"
+            name="price"
+            [(ngModel)]="productUP.price"
+            class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            placeholder="Ingrese el precio"
+          />
+        </div>
+        
+        <!-- Categoría -->
+        <div class="mb-4">
+          <label for="category" class="block text-sm font-medium text-gray-700">Categoría</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-100">{{ productUP.category.name }}</p>
+        </div>
+        
+        <!-- Marca -->
+        <div class="mb-4">
+          <label for="brand" class="block text-sm font-medium text-gray-700">Marca</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-100">{{ productUP.brand.name }}</p>
+        </div>
+        
+        <!-- Unidad -->
+        <div class="mb-4">
+          <label for="unit" class="block text-sm font-medium text-gray-700">Unidad</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm sm:text-sm bg-gray-100">{{ productUP.unit.description }}</p>
+        </div>
+        
+        <!-- Botón de Actualizar -->
+        <div class="col-span-2 flex justify-center mt-6">
+          <button
+            type="submit"
+            class="px-6 py-3 bg-green-500 text-white font-semibold rounded hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300"
+          >
+            Actualizar
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  
+  
+  
+
+
+  <div *ngIf="!isEdit && detail" class="container mx-auto w-[800px] p-8 bg-white rounded-lg shadow-lg">
+    <h1 class="text-3xl font-semibold mb-6 text-green-500">Detalles del Producto</h1>
+    <div class="flex flex-wrap">
+      <!-- Imagen del Producto -->
+      <div class="w-full md:w-1/2 p-4 flex justify-center items-center">
+        <img [src]="imageProduct" alt="Imagen del Producto" class="w-80 h-80 object-contain border border-gray-300 rounded-md shadow-sm"/>
+      </div>
+      
+      <!-- Campos del Producto -->
+      <div class="w-full md:w-1/2 p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Nombre del Producto -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Nombre</label>
+          <p class="mt-1 block w-[300px] px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100">{{ productUP.name }}</p>
+        </div>
+        
+        <!-- Descripción -->
+        <div class="mb-4 col-span-2">
+          <label class="block text-sm font-medium text-gray-700">Descripción</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100">{{ productUP.description }}</p>
+        </div>
+        
+        <!-- Precio -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Precio</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100">{{ productUP.price  }}</p>
+        </div>
+        
+        <!-- Categoría -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Categoría</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100">{{ productUP.category.name }}</p>
+        </div>
+        
+        <!-- Marca -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Marca</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100">{{ productUP.brand.name }}</p>
+        </div>
+        
+        <!-- Unidad -->
+        <div class="mb-4">
+          <label class="block text-sm font-medium text-gray-700">Unidad</label>
+          <p class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-md shadow-sm bg-gray-100">{{ productUP.unit.description }}</p>
+        </div>
+        
+        <!-- Botón de Regresar -->
+     
+      </div>
+    </div>
+  </div>
+  
+  

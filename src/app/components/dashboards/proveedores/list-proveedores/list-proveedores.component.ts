@@ -27,6 +27,7 @@ export class ListProveedoresComponent implements OnInit{
   numPag: number = this.selectedPage;
   first!:boolean;
   from:number=1;
+  numElements!:number;
   to!:number;
   last!:boolean;
   totalPages!:number;
@@ -78,9 +79,10 @@ export class ListProveedoresComponent implements OnInit{
       next: (data:any) => {
         console.log('numPag:', this.numPag, 'field:', this.field, 'pageSize:', this.pageSize, 'sortDirec:', this.sortDirec);
         this.pageSize=data.size;
+        this.numElements=data.numberOfElements;
         this.totalEmlements=data.totalElements;
-        this.from=data.first?1:(this.numPag+this.pageSize);
-        this.to=this.from+this.pageSize-1;
+        this.from=data.first?1:(this.pageSize*this.numPag)+1;
+        this.to=this.numElements+this.from-1;
         this.first=data.first;
         this.totalPages=data.totalPages;
         this.last=data.last;
