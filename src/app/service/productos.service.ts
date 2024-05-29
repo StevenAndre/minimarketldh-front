@@ -70,6 +70,24 @@ export class ProductosService {
       responseType: 'blob' as 'json',
     });
   }
+
+  public getAllProductsLike(
+    name: string = '',
+    numPag: number = 0,
+    field: string = 'name',
+    pageSize: number = 3,
+    sortDirec: string = 'asc'
+  ): Observable<any> {
+    const params = new HttpParams()
+      .set('name', name)
+      .set('numPag', numPag.toString())
+      .set('field', field)
+      .set('pageSize', pageSize.toString())
+      .set('sortDirec', sortDirec);
+    return this.http.get<any>(`${this.baseURL}/all-pag-like`, { params });
+  }
+
+
 }
 export interface ProductRequest {
   name: string;

@@ -9,8 +9,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { SpinnerInterceptor } from './service/spinner.interceptor';
 import { provideOAuthClient } from 'angular-oauth2-oidc';
 import { IMAGE_CONFIG } from '@angular/common';
+import { DatePipe } from '@angular/common';
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes),
+    DatePipe,
     provideHttpClient(withInterceptors([authInterceptor,SpinnerInterceptor])), provideAnimationsAsync(),
     provideOAuthClient(),
     {

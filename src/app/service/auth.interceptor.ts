@@ -18,6 +18,7 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     return next(req);
   }
   const authToken = localStorage.getItem("token");
+  
   if (!authToken) {
     router.navigate(['/login']);
     return next(req);

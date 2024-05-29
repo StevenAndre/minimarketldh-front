@@ -16,7 +16,7 @@ export class ProductListComponent implements OnInit{
 
 
 
-
+  buscar:string="";
   isEdit:boolean=false;
   detail:boolean=false;
   productID!:string;
@@ -58,6 +58,14 @@ export class ProductListComponent implements OnInit{
      this.closeModal(); // Cierra el modal
      this.getProducts();
     }
+  }
+
+
+  onSearchChange(buscar: string): void {
+    this.getProducts();
+    this.numPag=0;
+    console.log(this.buscar);
+
   }
 
   nextPage(){
@@ -147,39 +155,79 @@ export class ProductListComponent implements OnInit{
 
 
   getProducts(){
-    this.productServ.getAllProductsPaginated(this.numPag, this.field, this.pageSize, this.sortDirec).subscribe({
-      next: (data:any) => {
-        console.log('numPag:', this.numPag, 'field:', this.field, 'pageSize:', this.pageSize, 'sortDirec:', this.sortDirec);
-        this.pageSize=data.size;
-        this.numElements=data.numberOfElements;
-        this.totalEmlements=data.totalElements;
-        this.from=data.first?1:(this.pageSize*this.numPag)+1;
-        this.to=this.numElements+this.from-1;
-        this.first=data.first;
-        this.totalPages=data.totalPages;
-        this.last=data.last;
-        console.log(data);
-        this.productos=data.content;
-        this.productos.forEach(
-          (p)=>{
-            if(p.image!==null){
-              this.productServ.getProductImage(p.image).subscribe({
-                next: (imagen) => {
-                  p.pathImage=URL.createObjectURL(imagen);
-                }
-              });
-            }else{
-              p.pathImage='../../../../../assets/images/noimagen.png'
+
+    if(this.buscar.length<1){
+      this.productServ.getAllProductsPaginated(this.numPag, this.field, this.pageSize, this.sortDirec).subscribe({
+        next: (data:any) => {
+          console.log('numPag:', this.numPag, 'field:', this.field, 'pageSize:', this.pageSize, 'sortDirec:', this.sortDirec);
+          this.pageSize=data.size;
+          this.numElements=data.numberOfElements;
+          this.totalEmlements=data.totalElements;
+          this.from=data.first?1:(this.pageSize*this.numPag)+1;
+          this.to=this.numElements+this.from-1;
+          this.first=data.first;
+          this.totalPages=data.totalPages;
+          this.last=data.last;
+          console.log(data);
+          this.productos=data.content;
+          this.productos.forEach(
+            (p)=>{
+              if(p.image!==null){
+                this.productServ.getProductImage(p.image).subscribe({
+                  next: (imagen) => {
+                    p.pathImage=URL.createObjectURL(imagen);
+                  }
+                });
+              }else{
+                p.pathImage='../../../../../assets/images/noimagen.png'
+              }
             }
-          }
-        );
-       
-        
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    });
+          );
+         
+          
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }else{
+      
+      this.productServ.getAllProductsLike(this.buscar,this.numPag, this.field, this.pageSize, this.sortDirec).subscribe({
+        next: (data:any) => {
+          console.log('numPag:', this.numPag, 'field:', this.field, 'pageSize:', this.pageSize, 'sortDirec:', this.sortDirec);
+          this.pageSize=data.size;
+          this.numElements=data.numberOfElements;
+          this.totalEmlements=data.totalElements;
+          this.from=data.first?1:(this.pageSize*this.numPag)+1;
+          this.to=this.numElements+this.from-1;
+          this.first=data.first;
+          this.totalPages=data.totalPages;
+          this.last=data.last;
+          console.log(data);
+          this.productos=data.content;
+          this.productos.forEach(
+            (p)=>{
+              if(p.image!==null){
+                this.productServ.getProductImage(p.image).subscribe({
+                  next: (imagen) => {
+                    p.pathImage=URL.createObjectURL(imagen);
+                  }
+                });
+              }else{
+                p.pathImage='../../../../../assets/images/noimagen.png'
+              }
+            }
+          );
+         
+          
+        },
+        error: (error) => {
+          console.log(error);
+        }
+      });
+    }
+
+   
   }
 
   
