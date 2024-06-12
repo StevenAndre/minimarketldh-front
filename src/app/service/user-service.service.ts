@@ -22,7 +22,11 @@ export class UserServiceService {
   }
 
   deleteUser(userID:string):Observable<any>{
+    
     return this.http.delete(`${this.baseURLUsers}/delete/${userID}`)
   }
+
+
+
 
 }

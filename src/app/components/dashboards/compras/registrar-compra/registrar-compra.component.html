@@ -86,7 +86,8 @@
                       </td>
                       <td class="px-4 py-4 whitespace-nowrap text-sm">
                         <input 
-                        class="w-20" name="precio" type="number"
+                        
+                        class="w-20 border-2 border-blue-500" name="precio" type="number"
                         (input)="onPrecioChange($event)"
                         >
                         
@@ -340,8 +341,9 @@
 
 
   <div *ngIf="detail" class="container" >
+    <div class="container mx-auto my-4 p-4 bg-white rounded shadow-lg grid grid-cols-1 lg:grid-cols-2 gap-4">
     <div class="rounded shadow-xl p-2">
-      <h2 class="text-xl font-semibold mb-4">Orden Compra</h2>
+      <h2 class="text-xl font-semibold mb-4">Detalles de Compra</h2>
 
       <div class="overflow-auto max-w-full max-h-screen mb-4">
 
@@ -359,10 +361,10 @@
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             
-            @for (p of productosCAR; track $index) {
-              <tr *ngIf="p">
+            @for (d of Detalles; track $index) {
+              <!-- <tr >
                   <td class="px-3 py-2 whitespace-nowrap text-sm">
-                    <img [src]="p.image" alt="IMAGEN" class="w-16 h-16 object-contain"/>
+                    <img [src]="d.image" alt="IMAGEN" class="w-16 h-16 object-contain"/>
                     </td>
                   <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{p.cod_product}}</td>
                   <td class="px-4 py-4 whitespace-nowrap text-sm">{{p.name}}</td>
@@ -401,37 +403,9 @@
                   </button>
 
                   </td>
-              </tr>
+              </tr> -->
 
-              <tr *ngIf="!p">
-                <td class="px-3 py-2 whitespace-nowrap text-sm">
-                  ---
-                  </td>
-                <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">---</td>
-                <td class="px-4 py-4 whitespace-nowrap text-sm">---</td>
-                <td class="px-4 py-4 whitespace-nowrap text-sm">
-                    <button class="text-gray-600 hover:text-gray-900">
-                      <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    </button>
-                    <span class="mx-2">---</span>
-                    <button class="text-gray-600 hover:text-gray-900">
-                      <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                    </button>
-                </td>
-                <td class="px-4 py-4 whitespace-nowrap text-sm">---</td>
-                <td class="px-4 py-4 whitespace-nowrap text-sm">---</td>
-                <td class="px-4 py-4 whitespace-nowrap text-sm">
-
-                  
-                    <button
-                    class="inline-block rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
-                    title="Agregar Product"
-                  >
-                  <svg class="h-6 w-6 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                  </button>
-
-                </td>
-            </tr>
+       
 
             }
             
@@ -458,5 +432,6 @@
           (click)="registrarCOmpra()"
           class="w-full py-2 bg-purple-500 text-white rounded-md shadow-sm hover:bg-purple-700">GUARDAR</button>
       </div>
+  </div>
   </div>
   </div>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ComprasService,PurchaseDto } from '../../../../service/compras.service';
 import { RegistrarCompraComponent } from '../registrar-compra/registrar-compra.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-list-compras',
@@ -43,7 +44,7 @@ export class ListComprasComponent implements OnInit {
   selectPage(page: number): void {
     this.selectedPage = page;
     this.numPag=this.selectedPage;
-    
+    this.cargarDATA();
   }
 
 
@@ -85,25 +86,26 @@ export class ListComprasComponent implements OnInit {
   nextPage(){
     ++this.numPag;
     ++this.selectedPage;
+    this.cargarDATA();
     
   }
 
   previusPage(){
     --this.numPag;
     --this.selectedPage;
-    
+    this.cargarDATA();
   }
 
 
   changePage(newPage: number): void {
     this.numPag = newPage;
-  
+    this.cargarDATA();
   }
 
   changeSort(field: string, direction: string): void {
     this.field = field;
     this.sortDirec = direction;
-   
+    this.cargarDATA();
   }
 
 
@@ -111,7 +113,7 @@ export class ListComprasComponent implements OnInit {
 
   changePageSize(newPageSize: number): void {
     this.pageSize = newPageSize;
-    
+    this.cargarDATA();
   }
 
   closeModal(){
@@ -123,6 +125,41 @@ export class ListComprasComponent implements OnInit {
     console.log("ABRIENDO REGISTRAr");
     this.isVisible=true;
     
+  }
+
+
+  
+  deleteCompra(compraID:string){
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: "Deseas eliminar la compra?",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar compra',
+      cancelButtonText: 'No, cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.compraServ.deletePurchase(compraID).subscribe({
+          next: (data) => {
+            Swal.fire(
+              '¡Eliminado!',
+              'El registro de la compra fue eliminado',
+              'success'
+            );
+            this.cargarDATA();
+            
+          },
+          error: (err) => {
+           Swal.fire('Vaya!','Parece que ocurrio un error intenta de nuevo')
+          }
+        });
+        
+        
+      }
+    });
   }
 
 

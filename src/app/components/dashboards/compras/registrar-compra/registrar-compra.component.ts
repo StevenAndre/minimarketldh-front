@@ -42,7 +42,7 @@ buscar:string="";
   roveedorID!:string;
   subtotalA=this.cantidad*this.precioCompra;
   isEdit:boolean=false;
-  
+  Detalles:any;
   isVisible:boolean=false;
   selectedPage: number = 0;
   numPag: number = this.selectedPage;
@@ -67,6 +67,19 @@ buscar:string="";
 
   }
   ngOnInit(): void {
+
+
+    if(this.detail){
+      this.compraServ.getDetailsByPurchase(this.compraID).subscribe({
+          next:data=>{
+            console.log(data);
+            this.Detalles=data;
+          },
+          error:err=>{
+            console.log(err);
+          }
+      });
+    }
    this.cargarProveedores();
    this.cargarProductos();
    this.userService.getUSerActual().subscribe(
@@ -136,8 +149,10 @@ buscar:string="";
   calculateFinalData(){
     this.productosCAR.forEach(
       p=>{
+        console.log("Imrpieido subtoatl antes que todo:"+this.subtotalCAR);
+        console.log("Cantidad:"+p.cantidad);
+        console.log("PRecio:"+p.precio);
         this.subtotalCAR+=(p.cantidad*p.precio);
-       
       }
     );
     this.IGV=this.calcularIGV(this.subtotalCAR);
@@ -211,6 +226,7 @@ buscar:string="";
 
     this.calculateFinalData();
     this.precioCompra=0;
+    this.cantidad=0;
   }
 
 
@@ -218,12 +234,22 @@ buscar:string="";
 
     this.productosCAR=this.productosCAR.filter(pro=>pro!==p);
     this.calculateFinalData();
+    this.cantidad=0;
 
   }
 
 
   registrarCOmpra(){
 
+    if(!this.selectedSupplier){
+      Swal.fire('Alerta!','Debes selecionar un proveedor','warning');
+      return;
+    }
+
+    if(!this.selectedPaymentType){
+      Swal.fire('Alerta!','Debes selecionar un tipo de pago','warning');
+      return;
+    }
     
     let compra:CompraRequest;
     this.productosCAR.forEach(pc=>{

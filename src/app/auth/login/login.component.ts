@@ -50,7 +50,7 @@ export class LoginComponent {
         this.loginReques=new loginDTO();
         console.log(data);
         this.loginser.saveToken(data.token);
-        this.router.navigate(['/dashboard/admin-dashboard']);
+        this.router.navigate(['/dashboard/admin-dashboard/main']);
       },
       error: (error) => {
         console.log(error);
