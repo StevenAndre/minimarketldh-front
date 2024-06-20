@@ -1,8 +1,22 @@
 <div *ngIf="!isEdit && !detail" class="container mx-auto p-4">
-    <h1 class="text-2xl font-semibold mb-4">Registrar nuevo Proveedor</h1>
-    <form [formGroup]="proveedorForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="mb-4">
-        <label for="document" class="block text-sm font-medium text-gray-700">Documento</label>
+  <h1 class="text-2xl font-semibold mb-4">Registrar nuevo Proveedor</h1>
+  <form [formGroup]="proveedorForm" (ngSubmit)="onSubmit()" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+    <div class="mb-4">
+      <label for="typeDocument" class="block text-sm font-medium text-gray-700">Tipo de Documento</label>
+      <select
+        id="type_document"
+        formControlName="type_document"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        (change)="onTypeDocumentChange($event)"
+      >
+        <option *ngFor="let type of typeDocuments" [value]="type.id">{{ type.name }}</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label for="document" class="block text-sm font-medium text-gray-700">Documento</label>
+      <div class="flex">
         <input
           type="text"
           id="document"
@@ -10,95 +24,93 @@
           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
           placeholder="Ingrese el documento"
         />
-      </div>
-  
-      <div class="mb-4">
-        <label for="name" class="block text-sm font-medium text-gray-700">Nombre/Razon Social</label>
-        <input
-          type="text"
-          id="name"
-          formControlName="name"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          placeholder="Ingrese el nombre o razón social"
-        />
-      </div>
-  
-      <div class="mb-4">
-        <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
-        <input
-          type="text"
-          id="address"
-          formControlName="address"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          placeholder="Ingrese la dirección"
-        />
-      </div>
-  
-      <div class="mb-4">
-        <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
-        <input
-          type="number"
-          id="phone"
-          formControlName="phone"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          placeholder="Ingrese el teléfono"
-        />
-      </div>
-  
-      <div class="mb-4">
-        <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
-        <input
-          type="email"
-          id="email"
-          formControlName="email"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          placeholder="Ingrese el correo electrónico"
-        />
-      </div>
-  
-      <div class="mb-4">
-        <label for="observation" class="block text-sm font-medium text-gray-700">Observaciones</label>
-        <textarea
-          id="observation"
-          formControlName="observation"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-          placeholder="Ingrese observaciones"
-        ></textarea>
-      </div>
-  
-      <div class="mb-4">
-        <label for="typeDocument" class="block text-sm font-medium text-gray-700">Tipo de Documento</label>
-        <select
-          id="type_document"
-          formControlName="type_document"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-          <option *ngFor="let type of typeDocuments" [value]="type.id">{{ type.name }}</option>
-        </select>
-      </div>
-  
-      <div class="mb-4">
-        <label for="categorySupplier" class="block text-sm font-medium text-gray-700">Rubro de Proveedor</label>
-        <select
-          id="category_supplier"
-          formControlName="category_supplier"
-          class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-        >
-          <option class="uppercase" *ngFor="let category of categorySuppliers" [value]="category.id">{{ category.description}}</option>
-        </select>
-      </div>
-  
-      <div class="md:col-span-2 flex justify-end">
         <button
-          type="submit"
-          class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+          type="button"
+          class="ml-2 px-2 py-2 bg-blue-300 text-white font-semibold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 flex items-center"
+          (click)="consultarDocumento()"
         >
-          Guardar
+          <i class="fas fa-search mr-1"></i>
+          {{nombreBotonConsult}}
         </button>
       </div>
-    </form>
-  </div>
-  
+    </div>
+
+    <div class="mb-4">
+      <label for="name" class="block text-sm font-medium text-gray-700">Nombre/Razon Social</label>
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Ingrese el nombre o razón social"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="address" class="block text-sm font-medium text-gray-700">Dirección</label>
+      <input
+        type="text"
+        id="address"
+        formControlName="address"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Ingrese la dirección"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="phone" class="block text-sm font-medium text-gray-700">Teléfono</label>
+      <input
+        type="number"
+        id="phone"
+        formControlName="phone"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Ingrese el teléfono"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="email" class="block text-sm font-medium text-gray-700">Correo Electrónico</label>
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Ingrese el correo electrónico"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="observation" class="block text-sm font-medium text-gray-700">Observaciones</label>
+      <textarea
+        id="observation"
+        formControlName="observation"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        placeholder="Ingrese observaciones"
+      ></textarea>
+    </div>
+
+    <div class="mb-4">
+      <label for="categorySupplier" class="block text-sm font-medium text-gray-700">Rubro de Proveedor</label>
+      <select
+        id="category_supplier"
+        formControlName="category_supplier"
+        class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+      >
+        <option class="uppercase" *ngFor="let category of categorySuppliers" [value]="category.id">{{ category.description }}</option>
+      </select>
+    </div>
+
+    <div class="md:col-span-2 flex justify-end">
+      <button
+        type="submit"
+        class="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      >
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>
+
 
 
 

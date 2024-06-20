@@ -13,13 +13,13 @@ export const navbarData=[
         submenu: [
             {
                 istoggable:false,
-                routerLink: 'dashboard/sales-report',
-                label: 'Reporte de Ventas'
+                routerLink: '/dashboard/admin-dashboard/list-sales',
+                label: 'Lista de Ventas'
             },
             {
                 istoggable:false,
-                routerLink: 'dashboard/sales-analytics',
-                label: 'Analytics de Ventas'
+                routerLink: '/dashboard/admin-dashboard/register-sale',
+                label: 'Registrar Venta'
             }
         ]
     },
@@ -51,10 +51,7 @@ export const navbarData=[
         submendesplegado:false,
         label: 'Clientes',
         submenu: [
-            {
-                routerLink: '/dashboard/admin-dashboard/register-customer',
-                label: 'Registrar cliente'
-            },
+        
             {
                 routerLink: '/dashboard/admin-dashboard/list-customer',
                 label: 'Ver clientes'

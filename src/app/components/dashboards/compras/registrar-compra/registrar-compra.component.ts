@@ -98,6 +98,7 @@ buscar:string="";
   typeDPayment = [
     { id: 0, name: 'EFECTIVO' },
     { id: 1, name: 'TARJETA' },
+    { id: 2, name: 'CREDITO CUOTAS' },
   ];
   calcularIGV(valorTotal: number): number {
     const tasaIGV = 0.18; // 18%

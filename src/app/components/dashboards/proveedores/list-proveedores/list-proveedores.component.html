@@ -24,29 +24,27 @@
           #input>
       </div>
   
-      <div class="overflow-auto shadow-md sm:rounded-lg ">
+      <div class="overflow-auto shadow-md max-w-full max-h-72 sm:rounded-lg ">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Documento</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nombre/Razon Social</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Direccion</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">telefono</th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo Documento</th>
-              <!-- <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Correo</th> -->
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
+              <th scope="col" class="px-3 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Documento</th>
+              <th scope="col" class="px-3 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Nombre/Razon Social</th>
+              <th scope="col" class="px-3 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Direccion</th>
+              <th scope="col" class="px-3 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">telefono</th>
+              <th scope="col" class="px-3 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Tipo Documento</th>
+              <th scope="col" class="px-3 py-2 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">Acciones</th>
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
             @for (p of proveedores; track $index) {
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">{{p.document}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{p.name}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{p.address}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{p.phone}}</td>
-                    <td class="px-6 py-4 whitespace-nowrap">{{p.type_document}}</td>
-                    <!-- <td class="px-6 py-4 whitespace-nowrap">{{p.email}}</td> -->
-                    <td class="px-3 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <td class="px-2 py-1 whitespace-nowrap">{{p.document}}</td>
+                    <td class="px-2 py-1 whitespace-nowrap">{{p.name}}</td>
+                    <td class="px-2 py-1 whitespace-nowrap">{{p.address}}</td>
+                    <td class="px-2 py-1 whitespace-nowrap">{{p.phone}}</td>
+                    <td class="px-2 py-1 whitespace-nowrap">{{p.type_document}}</td>
+                    <td class="px-2 py-1 whitespace-nowrap text-right text-sm font-medium">
                       <span class="inline-flex gap-2 overflow-hidden ">
                        
                         <button

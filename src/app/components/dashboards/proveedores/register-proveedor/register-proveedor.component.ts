@@ -4,6 +4,7 @@ import { ProveedoresService } from '../../../../service/proveedores.service';
 import { NgFor, NgIf } from '@angular/common';
 import { RubrosService } from '../../../../service/rubros.service';
 import Swal from 'sweetalert2';
+import { ConsultaSdocumentoService } from '../../../../service/consulta-sdocumento.service';
 
 
 @Component({
@@ -20,9 +21,11 @@ export class RegisterProveedorComponent implements OnInit{
   @Input() detail!:boolean;
   @Output() registroExitoso = new EventEmitter<boolean>();
 
+  tipoDoc!:number;
   proveedorUp!:ProveedorUpdate;
   provUPdated!:ProveedorUPSend;
   proveedorForm: FormGroup;
+  nombreBotonConsult:string="SUNAT";
   typeDocuments = [
     { id: 0, name: 'DNI' },
     { id: 1, name: 'RUC' },
@@ -30,7 +33,8 @@ export class RegisterProveedorComponent implements OnInit{
   categorySuppliers:any;
 
   constructor(private fb: FormBuilder, private proveedorService: ProveedoresService,
-    private rubroSer:RubrosService
+    private rubroSer:RubrosService,
+    private consultas:ConsultaSdocumentoService
   ) {
     this.proveedorForm = this.fb.group({
       document: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(11)]],
@@ -120,6 +124,53 @@ export class RegisterProveedorComponent implements OnInit{
     console.log(newProveedor);
     }
   }
+
+  consultarDocumento(){
+    let document = this.proveedorForm.get('document')?.value;
+    if(this.tipoDoc==0){
+
+      this.consultas.consultarDNI(document).subscribe({
+        next:(data)=>{
+          console.log(data);
+          let name=`${data.nombres} ${data.apellidoPaterno} ${data.apellidoMaterno}`
+          this.proveedorForm.get('name')?.setValue(name);
+        },
+        error:err=>console.log(err)
+      });
+    }else if(this.tipoDoc==1){
+      this.consultas.consultarRUC(document).subscribe({
+        next:(data)=>{
+          console.log(data);
+          let name=data.razonSocial
+          let address=data.direccion
+          this.proveedorForm.get('name')?.setValue(name);
+          this.proveedorForm.get('address')?.setValue(address);
+        },
+        error:err=>console.log(err)
+      });
+    }
+
+
+    
+  }
+
+  onTypeDocumentChange(event:any){
+    let tipo=event.target.value
+    this.tipoDoc=tipo;
+    this.proveedorForm.get('name')?.setValue("");
+    this.proveedorForm.get('document')?.setValue("");
+    this.proveedorForm.get('address')?.setValue("");
+    if(tipo==0){
+      this.nombreBotonConsult="RENIEC";
+      console.log("CAMBIANDO NOBRE BOTN:"+this.nombreBotonConsult);
+    }else if(tipo==1){
+      this.nombreBotonConsult="SUNAT";
+      console.log("CAMBIANDO NOBRE BOTN:"+this.nombreBotonConsult);
+    }
+ 
+  }
+
+
 }
 
 interface ProveedorReg {

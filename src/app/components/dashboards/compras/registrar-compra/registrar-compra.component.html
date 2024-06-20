@@ -14,7 +14,7 @@
                   <select 
                   name="supplier"
                   [(ngModel)]="selectedSupplier"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                  class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     <option *ngFor="let p of proveedores" [value]="p.document">{{ p.name }}</option>
                   </select>
               </div>
@@ -23,13 +23,23 @@
                   <select 
                   name="paymentType"
                   [(ngModel)]="selectedPaymentType"
-                  class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                  class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                     <option *ngFor="let type of typeDPayment" [value]="type.id">{{ type.name }}</option>
                   </select>
               </div>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Serie</label>
+                    <input type="text" value="F001" class="mt-1 block w-full rounded-md px-1 border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700">Nro Compra</label>
+                    <input type="text" value="000025" class="mt-1 block w-full rounded-md px-1 border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </div>
+              </div>
               <div>
                   <label class="block text-sm font-medium text-gray-700">Descripción</label>
-                  <textarea name="description" [(ngModel)]="description" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
+                  <textarea name="description" [(ngModel)]="description" rows="3" class="mt-1 block w-full border rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"></textarea>
               </div>
           </div>
           </form>
@@ -68,8 +78,8 @@
                   
                 @for (p of productos; track $index) {
                   <tr *ngIf="p">
-                      <td class="px-3 py-2 whitespace-nowrap text-sm">
-                        <img [src]="p.pathImage" alt="IMAGEN" class="w-16 h-16 object-contain"/>
+                      <td class="whitespace-nowrap ">
+                        <img [src]="p.pathImage" alt="IMAGEN" class="h-10 object-contain"/>
                         </td>
                       <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{p.cod_product}}</td>
                       <td class="px-4 py-4 whitespace-nowrap text-sm">{{p.name}}</td>
@@ -98,10 +108,10 @@
                         
                           <button
                           (click)="pasarProducto(p)"
-                          class="inline-block rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
+                          class="inline-block rounded-full border bg-green-200 p-3 text-green-600 hover:bg-green-400 hover:text-green-900 focus:relative"
                           title="Agregar Product"
                         >
-                        <svg class="h-6 w-6 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
+                        <svg class="h-6 w-6 text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
                         </button>
                       </td>
                   </tr>
@@ -127,7 +137,7 @@
 
                       
                         <button
-                        class="inline-block rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
+                        class="inline-block rounded-full border bg-green-200 p-3 text-green-600 hover:bg-green-400 hover:text-green-900 focus:relative"
                         title="Agregar Product"
                       >
                       <svg class="h-6 w-6 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
@@ -239,8 +249,8 @@
                 
                 @for (p of productosCAR; track $index) {
                   <tr *ngIf="p">
-                      <td class="px-3 py-2 whitespace-nowrap text-sm">
-                        <img [src]="p.image" alt="IMAGEN" class="w-16 h-16 object-contain"/>
+                      <td class="whitespace-nowrap text-sm">
+                        <img [src]="p.image" alt="IMAGEN" class=" h-10 object-contain"/>
                         </td>
                       <td class="px-4 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{p.cod_product}}</td>
                       <td class="px-4 py-4 whitespace-nowrap text-sm">{{p.name}}</td>
@@ -259,7 +269,7 @@
                         
                         <button
                         (click)="deleteCar(p)"
-                        class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:text-red-900 focus:relative"
+                        class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:bg-red-400 hover:text-red-900 focus:relative"
                         title="Delete Product"
                       >
                         <svg

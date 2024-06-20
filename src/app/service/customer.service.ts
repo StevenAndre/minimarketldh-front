@@ -16,4 +16,11 @@ export class CustomerService {
     return this.http.get(`${this.baseURLCustomers}/all`);
   }
 
+
+  guardarCliente(cliente:any):Observable<any>{
+    return this.http.post(`${this.baseURLCustomers}/register`,cliente);
+  }
+
+
+
 }

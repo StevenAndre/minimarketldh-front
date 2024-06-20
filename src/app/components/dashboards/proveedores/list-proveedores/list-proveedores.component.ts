@@ -33,7 +33,7 @@ export class ListProveedoresComponent implements OnInit{
   totalPages!:number;
   field: string = 'name';
   totalEmlements!:number;
-  pageSize: number = 3;
+  pageSize: number = 5;
   sortDirec: string = 'asc';
   ngOnInit(): void {
 
@@ -180,6 +180,8 @@ export class ListProveedoresComponent implements OnInit{
     this.detail=true;
     this.isVisible=true;
   }
+
+
 
 
 }

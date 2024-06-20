@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ComprasService,PurchaseDto } from '../../../../service/compras.service';
 import { RegistrarCompraComponent } from '../registrar-compra/registrar-compra.component';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-compras',
@@ -32,7 +33,7 @@ export class ListComprasComponent implements OnInit {
   sortDirec: string = 'asc';
 
   constructor(private compraServ:ComprasService,
-    
+    private router:Router
   ){
 
   }
@@ -182,7 +183,9 @@ export class ListComprasComponent implements OnInit {
     this.isVisible=true;
   }
 
-
+  abrirRegistro(){
+    this.router.navigate(['/dashboard/admin-dashboard/register-purchase']);
+  }
 
   transformarFecha(fecha: string): string {
     const fechaObjeto = new Date(fecha);

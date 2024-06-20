@@ -21,6 +21,9 @@ import { ListMarcasComponent } from './components/dashboards/productos/list-marc
 import { ListCategoriasComponent } from './components/dashboards/productos/list-categorias/list-categorias.component';
 import { ListUnidadesComponent } from './components/dashboards/productos/list-unidades/list-unidades.component';
 import { MainDashboardComponent } from './components/dashboards/main-dashboard/main-dashboard.component';
+import { ListaVentasComponent } from './components/dashboards/ventas/lista-ventas/lista-ventas.component';
+import { RegistroVentasComponent } from './components/dashboards/ventas/registro-ventas/registro-ventas.component';
+import { RegistrarCompraComponent } from './components/dashboards/compras/registrar-compra/registrar-compra.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -34,13 +37,16 @@ export const routes: Routes = [
             {path:'list-customer',component:CustomerListComponent},
             {path:'register-customer',component:CustomerRegisterComponent},
             {path:'purchase',component:ListComprasComponent},
+            {path:'register-purchase',component:RegistrarCompraComponent},
             {path:'proveedores',component:ListProveedoresComponent},
             {path:'rubros',component:ListRubrosComponent},
             {path:'products',component:ProductListComponent},
             {path:'brands',component:ListMarcasComponent},
             {path:'categories',component:ListCategoriasComponent},
             {path:'units',component:ListUnidadesComponent},
-            {path:'main',component:MainDashboardComponent}
+            {path:'main',component:MainDashboardComponent},
+            {path:'list-sales',component:ListaVentasComponent},
+            {path:'register-sale',component:RegistroVentasComponent},
         ]},
         {path:'user-dashboard',component:UserDashboardComponent},
         {path:'cajero-dashboard',component:CajeroDashboardComponent},
