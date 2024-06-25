@@ -109,13 +109,20 @@ export const navbarData=[
         ]
     },
     {
-        routerLink:'dashboard',
+        routerLink:'/dashboard/admin-dashboard/caja',
+        icon: 'fas fa-cash-register',
+        label: 'Caja',
+        submendesplegado:false,
+    },
+   
+    {
+        routerLink:'/dashboard/admin-dashboard/inventario',
         icon: 'far fa-clipboard',
         label: 'Inventario',
         submendesplegado:false,
     },
     {
-        routerLink:'dashboard',
+        routerLink:'/dashboard/admin-dashboard/pedidos',
         icon: 'fas fa-ambulance',
         label: 'Pedidos',
         submendesplegado:false,

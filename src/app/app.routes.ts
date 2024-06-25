@@ -24,6 +24,9 @@ import { MainDashboardComponent } from './components/dashboards/main-dashboard/m
 import { ListaVentasComponent } from './components/dashboards/ventas/lista-ventas/lista-ventas.component';
 import { RegistroVentasComponent } from './components/dashboards/ventas/registro-ventas/registro-ventas.component';
 import { RegistrarCompraComponent } from './components/dashboards/compras/registrar-compra/registrar-compra.component';
+import { PedidosComponent } from './components/dashboards/pedidos/pedidos.component';
+import { CajaComponent } from './components/dashboards/caja/caja.component';
+import { InventarioComponent } from './components/dashboards/inventario/inventario.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
@@ -47,6 +50,9 @@ export const routes: Routes = [
             {path:'main',component:MainDashboardComponent},
             {path:'list-sales',component:ListaVentasComponent},
             {path:'register-sale',component:RegistroVentasComponent},
+            {path:'pedidos',component:PedidosComponent},
+            {path:'inventario',component:InventarioComponent},
+            {path:'caja',component:CajaComponent},
         ]},
         {path:'user-dashboard',component:UserDashboardComponent},
         {path:'cajero-dashboard',component:CajeroDashboardComponent},
