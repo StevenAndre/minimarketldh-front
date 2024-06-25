@@ -1,0 +1,19 @@
+:host {
+    display: block;
+    background-color: #ffffff;
+  }
+  
+
+  
+
+  .text-lg {
+    color: #555555;
+  }
+  
+  .text-4xl {
+    color: #333333;
+  }
+  
+  .fa-3x {
+    font-size: 3em;
+  }
