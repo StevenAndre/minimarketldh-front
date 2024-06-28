@@ -1,24 +1,23 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { RegistroVentasComponent } from './registro-ventas.component';
+import { AperturaComponent } from './apertura.component';
 
-describe('RegistroVentasComponent', () => {
-  let component: RegistroVentasComponent;
-  let fixture: ComponentFixture<RegistroVentasComponent>;
+describe('AperturaComponent', () => {
+  let component: AperturaComponent;
+  let fixture: ComponentFixture<AperturaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [RegistroVentasComponent]
+      imports: [AperturaComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(RegistroVentasComponent);
+    fixture = TestBed.createComponent(AperturaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    
     expect(component).toBeTruthy();
   });
 });

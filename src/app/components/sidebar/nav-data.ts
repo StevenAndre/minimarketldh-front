@@ -113,6 +113,16 @@ export const navbarData=[
         icon: 'fas fa-cash-register',
         label: 'Caja',
         submendesplegado:false,
+        submenu: [
+            {
+                routerLink: '/dashboard/admin-dashboard/caja',
+                label: 'Cajas'
+            },
+            {
+                routerLink: '/dashboard/admin-dashboard/lista-aperturas',
+                label: 'Aperturas'
+            },
+        ]
     },
    
     {

@@ -8,5 +8,26 @@
       <li><a routerLink="/about">About</a></li>
       <li><a routerLink="/services">Services</a></li>
       <li><a routerLink="/contact">Contact</a></li>
+
+      @if (userSignal()!=null) {
+        <li class="user">
+          <i class="fas fa-user-alt" ></i>
+          <a class="username" routerLink="/contact">{{userSignal()!.username}}</a>
+        </li>
+  
+        <li class="logout">
+          <button (click)="logut()"> 
+            <i class="fas fa-sign-out-alt" ></i>
+          </button>
+        </li >
+      }
+
+
+ 
+        
+     
+
+
+      
     </ul>
   </nav>

@@ -22,5 +22,11 @@ export class CustomerService {
   }
 
 
+  getClienteByDocument(documento:string):Observable<any>{
+    return this.http.get(`${this.baseURLCustomers}/${documento}`,);
+  }
+
+
+
 
 }

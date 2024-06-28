@@ -17,6 +17,12 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
     // Si la ruta actual está en la lista de rutas excluidas, no aplicar el interceptor
     return next(req);
   }
+  if (currentUrl.startsWith('back.apisunat.com')) {
+    return next(req);
+  }
+
+
+
   const authToken = localStorage.getItem("token");
   
   if (!authToken) {

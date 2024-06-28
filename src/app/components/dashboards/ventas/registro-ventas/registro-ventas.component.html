@@ -1,499 +1,434 @@
-<div class="container">
-    <h1 class="title">Registrar Ventas</h1>
+<div class="container" [formGroup]="ventaForm" >
+  <h1 class="title">Registrar Ventas</h1>
 
 
-    <div class="container mx-auto my-1 bg-white rounded shadow-lg grid grid-cols-1 lg:grid-cols-3  gap-4">
+  <div class="container mx-auto my-1 bg-white rounded shadow-lg grid grid-cols-1 lg:grid-cols-3 gap-4">
 
-      <div class="col-span-2">
-        <!-- Cabecera -->
-        <h1 class="text-2xl font-semibold mb-4">Nueva Venta</h1>
+    <div class="col-span-2">
+      <!-- Cabecera -->
+      <h1 class="text-2xl font-semibold mb-4">Nueva Venta</h1>
 
-          <div class="flex justify-between mb-1">
+        <div class="flex justify-between mb-4">
 
-            <div>
-              <label for="buscar-cliente" class="block text-sm font-medium text-gray-700">Cliente</label>
-              <input id="buscar-cliente" type="text" placeholder="Buscar Cliente" class="block w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-
-            <div class="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                <label for="buscar-producto" class="block text-sm font-medium text-gray-700">Tipo de Documento</label>
-                <select id="buscar-producto" class="block w-full px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    <option>DNI</option>
-                    <option>RUC</option>
-                </select>
-              </div>
-
-              <div>
-                <label for="buscar-producto" class="block text-sm font-medium text-gray-700">Nro de Documento</label>
-                <input id="buscar-producto" type="text" value="71887189" class="px-2 py-1 block w-full rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              </div>
-
-            </div>
-          </div>
-
-         <!-- Búsqueda y total venta -->
-          <div class="flex justify-between items-center mb-4">
-            <div class="flex items-center space-x-2">
-              <label for="buscar-producto" class="text-sm font-medium text-gray-700">Productos</label>
-              <input id="buscar-producto" type="text" placeholder="Buscar producto" class="w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-            <div class="flex items-center space-x-2">
-              <label for="fecha-venta" class="text-sm font-medium text-gray-700">Fecha</label>
-              <input id="fecha-venta" type="date" value="2024-06-30T9:00" class="w-full px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-          </div>
-
-        <!-- Tabla de productos -->
-        <!-- border border-gray-300 rounded -->
-        <div class="overflow-auto max-w-full max-h-80 mb-4">
-
-          <table class="overflow-auto min-w-full divide-y divide-gray-200 w-full border border-gray-300">
-            <thead class="bg-gray-50">
-                <tr>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CÓDIGO</th>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NOMBRE</th>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CANTIDAD</th>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PRECIO</th>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TOTAL</th>
-                    <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
-                </tr>
-            </thead>
-            <tbody class="bg-white divide-y divide-gray-200 ">
-                <tr>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm">
-                      <img alt="IMAGEN" class="w-16 h-16 object-contain"/>
-                    </td>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">PR000000001</td>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm">Actualizado</td>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm">
-                        <button class="text-gray-600 hover:text-gray-900">
-                          <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                        </button>
-                        <span class="mx-2">3</span>
-                        <button class="text-gray-600 hover:text-gray-900">
-                          <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                        </button>
-                    </td>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm">2</td>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm">6.00</td>
-                    <td class="px-3 py-2 whitespace-nowrap text-sm">
-                      <button
-                        class="inline-block mr-2 rounded-full border bg-green-200 p-3 text-green-600 hover:bg-green-400 hover:text-green-900 focus:relative"
-                        title="Agregar Product"
-                      >
-                      <svg class="h-5 w-5 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                      </button>
-                      <button
-                        class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:bg-red-400 hover:text-red-900 focus:relative"
-                        title="Delete Product"
-                      >
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke-width="2.4"
-                          stroke="currentColor"
-                          class="h-5 w-5"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                          />
-                        </svg>
-                      </button>
-                    </td>
-
-                </tr>
-
-                <tr>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <img alt="IMAGEN" class="w-16 h-16 object-contain"/>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-gray-900">PR000000001</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">Actualizado</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                      <span class="mx-2">3</span>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">2</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">6.00</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <button
-                      class="inline-block mr-2 rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
-                      title="Agregar Product"
-                    >
-                    <svg class="h-5 w-5 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                    </button>
-                    <button
-                      class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:text-red-900 focus:relative"
-                      title="Delete Product"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.4"
-                        stroke="currentColor"
-                        class="h-5 w-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-
-                </tr>
-
-                <tr>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <img alt="IMAGEN" class="w-16 h-16 object-contain"/>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-gray-900">PR000000001</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">Actualizado</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                      <span class="mx-2">3</span>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">2</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">6.00</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <button
-                      class="inline-block mr-2 rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
-                      title="Agregar Product"
-                    >
-                    <svg class="h-5 w-5 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                    </button>
-                    <button
-                      class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:text-red-900 focus:relative"
-                      title="Delete Product"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.4"
-                        stroke="currentColor"
-                        class="h-5 w-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-
-                </tr>
-
-                <tr>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <img alt="IMAGEN" class="w-16 h-16 object-contain"/>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-gray-900">PR000000001</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">Actualizado</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                      <span class="mx-2">3</span>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">2</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">6.00</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <button
-                      class="inline-block mr-2 rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
-                      title="Agregar Product"
-                    >
-                    <svg class="h-5 w-5 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                    </button>
-                    <button
-                      class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:text-red-900 focus:relative"
-                      title="Delete Product"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.4"
-                        stroke="currentColor"
-                        class="h-5 w-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-
-                </tr>
-
-                <tr>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <img alt="IMAGEN" class="w-16 h-16 object-contain"/>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-gray-900">PR000000001</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">Actualizado</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                      <span class="mx-2">3</span>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">2</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">6.00</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <button
-                      class="inline-block mr-2 rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
-                      title="Agregar Product"
-                    >
-                    <svg class="h-5 w-5 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                    </button>
-                    <button
-                      class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:text-red-900 focus:relative"
-                      title="Delete Product"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.4"
-                        stroke="currentColor"
-                        class="h-5 w-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-
-                </tr>
-
-                <tr>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <img alt="IMAGEN" class="w-16 h-16 object-contain"/>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs font-medium text-gray-900">PR000000001</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">Actualizado</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                      <span class="mx-2">3</span>
-                      <button class="text-gray-600 hover:text-gray-900">
-                        <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
-                      </button>
-                  </td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">2</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">6.00</td>
-                  <td class="px-3 py-2 whitespace-nowrap text-xs">
-                    <button
-                      class="inline-block mr-2 rounded-full border bg-green-200 p-3 text-green-600 hover:text-green-900 focus:relative"
-                      title="Agregar Product"
-                    >
-                    <svg class="h-5 w-5 text-green-600 hover:text-green-900 focus:relative"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
-                    </button>
-                    <button
-                      class="inline-block rounded-full border bg-red-200 p-3 text-red-600 hover:text-red-900 focus:relative"
-                      title="Delete Product"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke-width="2.4"
-                        stroke="currentColor"
-                        class="h-5 w-5"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
-                        />
-                      </svg>
-                    </button>
-                  </td>
-
-                </tr>
-            </tbody>
-          </table>
-
-        </div>
-
-        <!-- Controles de tabla -->
-        <div class="flex justify-between items-center mb-4">
-            <div class="flex items-center space-x-2">
-                <label for="mostrar-registros" class="text-sm text-gray-700">Mostrar</label>
-                <select id="mostrar-registros" class="mt-1 block w-20 rounded-md py-2 bordeer border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                    <option>10</option>
-                    <option>25</option>
-                    <option>50</option>
-                </select>
-                <span class="text-sm text-gray-700">registros</span>
-            </div>
-
-            <div class="text-lg font-semibold text-gray-700 mb-2">Total Venta: S/. 32.30</div>
-
-
-        </div>
-
-        <!-- Paginación -->
-        <div class="flex justify-between items-center mb-4">
-            <div>
-              <p class="text-sm text-gray-700">
-                Mostrando del
-                <span class="font-medium">1</span>
-                al
-                <span class="font-medium">6</span>
-                de
-                <span class="font-medium">20</span>
-                resultados
-              </p>
-            </div>
-
-            <div>
-              <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-                <a href="#" class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                  <span class="sr-only">Previous</span>
-                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
-                  </svg>
-                </a>
-                <a href="#" aria-current="page" class="relative z-10 inline-flex items-center bg-indigo-600 px-4 py-2 text-sm font-semibold text-white focus:z-20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">1</a>
-                <span class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-700 ring-1 ring-inset ring-gray-300 focus:outline-offset-0">...</span>
-                <a href="#" class="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">10</a>
-                <a href="#" class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                  <span class="sr-only">Next</span>
-                  <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                    <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
-                  </svg>
-                </a>
-              </nav>
-            </div>
-        </div>
-
-        <!-- <div class="text-right mt-6">
-          <button class="mr-3 px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-700">Realizar Venta</button>
-          <button class="px-4 py-2 bg-red-500 text-white rounded-md shadow-sm hover:bg-red-700">Cancelar Venta</button>
-        </div> -->
-
-      </div>
-
-
-
-      <!-- Resumen de venta -->
-      <div class="w-full mt-16 p-4 border border-gray-300 bg-blue-50 rounded shadow-lg">
-
-          <h2 class="text-lg font-semibold mb-4">Total Venta: S/. 32.30</h2>
-          <!-- <div class="mb-4">
-            <label class="block text-sm font-medium text-gray-700">Cliente</label>
-            <select class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                <option>Erick Livia Pinchi</option>
-                <option>Steven Andre Cardenas vela</option>
+          <div>
+            <label class="text-sm font-medium">Tipo Comprobante</label>
+            <select
+            formControlName="type_voucher"
+            (change)="comprobanteSeleccionado($event)"
+            class="mx-2 w-56 px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            
+              @for (item of comprobantes; track $index) {
+                <option [value]="item.id" >{{item.name}}</option>
+              }
+              
+              
+            
             </select>
           </div>
+        </div>
+
+        <div class="flex justify-start gap-16">
+
           <div class="grid grid-cols-2 gap-4 mb-4">
             <div>
-              <label class="block text-sm font-medium text-gray-700">Tipo Doc.</label>
-              <select class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                  <option>DNI</option>
-                  <option>RUC</option>
+              <label for="buscar-producto" class="text-sm font-medium">Tipo de Documento</label>
+              <select
+              formControlName="documentoSelect"
+              (change)="documentoSeleccionado($event)"
+              id="buscar-producto" class="w-40 px-2 py-1 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+              @for (item of documentos; track $index) {
+                <option [value]="item.id" >{{item.name}}</option>
+              }
+                 
               </select>
             </div>
+
             <div>
-                <label class="block text-sm font-medium text-gray-700">Nro Doc.</label>
-                <input type="text" value="71887189" class="mt-1 px-1 block w-full rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <label for="buscar-producto" class="text-sm font-medium">Nro de Documento</label>
+              <input
+              (input)="consultarDocumento($event)"
+              formControlName="customer"
+               [maxlength]="maxLengthDocument"
+              id="buscar-producto" type="text"  class="px-2 py-1 w-40 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
-          </div> -->
-          <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700">Comprobante</label>
-              <select class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                  <option>Boleta</option>
-                  <option>Factura</option>
-              </select>
           </div>
-          <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700">Tipo Pago</label>
-              <select class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
-                  <option>Efectivo</option>
-                  <option>Tarjeta</option>
-              </select>
+
+          
+            
+          <div  class="mt-[-5px] px-4 ">
+            <label for="buscar-cliente" class="text-sm font-medium px-7" >Cliente</label>
+            <div ngForm class="flex items-center mt-1"> <!-- Alinea el input y el botón en la misma línea -->
+              <button
+              (click)="openModal()"
+              class="text-2xl text-blue-500 mr-2"> <!-- Añade margen izquierdo al botón -->
+                <i class="fas fa-plus"></i>
+              </button>
+              <input
+                [(ngModel)]="clienteName"
+                readonly
+                name="clienteName"
+              id="buscar-cliente" type="text" placeholder="Buscar Cliente" class="w-72 px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
           </div>
+                  
+          
+          
+        </div>
+
+
+
+       <!-- Búsqueda y total venta -->
+        <div class="flex justify-start gap-16">
+          <!-- class="flex items-center space-x-2" -->
+
           <div class="grid grid-cols-2 gap-4 mb-4">
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">Serie</label>
-                  <input type="text" value="F001" class="mt-1 block w-full rounded-md px-1 border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              </div>
-              <div>
-                  <label class="block text-sm font-medium text-gray-700">Nro Venta</label>
-                  <input type="text" value="000025" class="mt-1 block w-full rounded-md px-1 border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              </div>
+            <div>
+              <label for="fecha-venta" class="text-sm font-medium">Fecha Emición</label>
+              <input
+              formControlName="issue_date"
+              id="fecha-venta" type="date" value="2024-06-30T9:00" class="w-40 px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <div>
+              <label for="fecha-venta" class="text-sm font-medium">Fecha Vencimiento</label>
+              <input
+              formControlName="due_date"
+              id="fecha-venta" type="date" value="2024-06-30T9:00" class="w-40 px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
           </div>
-          <div class="mb-4">
-              <label class="block text-sm font-medium text-gray-700">Efectivo recibido</label>
-              <input type="text" value="32.30" class="mt-1 block w-full rounded-md px-1 border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+
+          <div>
+
+            <!-- <label for="buscar-producto" class="text-sm font-medium">Productos</label>
+            <input id="buscar-producto" type="text" placeholder="Buscar producto" class="w-72 px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"> -->
+          
+
+           <div class="relative">
+            <label for="buscar-producto" class="text-sm font-medium">Productos</label>
+            <input
+              type="text"
+              class="w-72 px-2 py-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+              placeholder="Search product..."
+              (focus)="onInputFocus()"
+              (blur)="outFocus()"
+              (input)="filtrarProductos($event)"
+            />
+            <div
+              class="absolute mt-1 w-72 bg-white shadow-lg max-h-56 rounded-md overflow-auto z-10"
+            *ngIf="showDropdown"
+            >
+              <ul class="divide-y divide-gray-200">
+                @for (product of productFilter; track $index) {
+                  <li
+                  (click)="addProduc(product)"
+                  class="p-2 flex items-center cursor-pointer hover:bg-gray-100"
+                >
+                  <img
+                    [src]="product.pathImage"
+                    class="h-10 w-10 rounded-full mr-3"
+                  />
+                  <span>{{product.name}}</span>
+                </li>
+                }
+                
+              </ul>
+            </div>
           </div>
-          <div class="flex items-center mb-4">
-              <input id="efectivo-exacto" type="checkbox" checked class="h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
-              <label for="efectivo-exacto" class="ml-2 block text-sm text-gray-900">Efectivo Exacto</label>
+
           </div>
-          <div class="bg-white p-4 rounded border border-gray-300 shadow-sm">
-              <div class="flex justify-between mb-2">
-                  <span class="text-sm font-medium text-gray-700">Monto Efectivo:</span>
-                  <span class="text-sm text-gray-900">S/. 32.30</span>
-              </div>
-              <div class="flex justify-between mb-2">
-                  <span class="text-sm font-medium text-red-700">Vuelto:</span>
-                  <span class="text-sm text-red-700">S/. 0.00</span>
-              </div>
-              <div class="flex justify-between mb-2">
-                  <span class="text-sm font-medium text-gray-700">SUBTOTAL:</span>
-                  <span class="text-sm text-gray-900">S/. 26.49</span>
-              </div>
-              <div class="flex justify-between mb-2">
-                  <span class="text-sm font-medium text-gray-700">IGV (18%):</span>
-                  <span class="text-sm text-gray-900">S/. 5.81</span>
-              </div>
-              <div class="flex justify-between">
-                  <span class="text-sm font-medium text-gray-700">TOTAL:</span>
-                  <span class="text-sm text-gray-900">S/. 32.30</span>
-              </div>
+
+        </div>
+
+      <!-- Tabla de productos -->
+      <!-- border border-gray-300 rounded -->
+      <div class=" overflow-auto max-w-full max-h-80 mb-4">
+
+        <table class="overflow-auto min-w-full divide-y divide-gray-200 w-full border border-gray-300">
+          <thead class="bg-gray-50">
+              <tr>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">NOMBRE</th>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CANTIDAD</th>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">PRECIO</th>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Descuento %</th>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">TOTAL</th>
+                  <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+              </tr>
+          </thead>
+          <tbody  class="bg-white divide-y divide-gray-200 ">
+             
+            @for (p of productsCar; track $index) {
+              <tr ngForm>
+                <td class="px-3 py-1 whitespace-nowrap text-sm">
+                  <img alt="IMAGEN" [src]="p.pathImage" class="w-16 h-16 object-contain"/>
+                </td>
+                <td class="px-3 py-1 whitespace-nowrap text-sm">{{p.name}}</td>
+                <td class="px-3 py-1 whitespace-nowrap text-sm">
+                    <button 
+                    (click)="restCantidad(p)"
+                    class="text-gray-600 hover:text-gray-900">
+                      <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                    </button>
+                    <input (input)="changeCantidad($event,p)" name="quantity" [(ngModel)]="p.quantity"  class="bg-gray-100 w-6 text-sm" type="number"  >
+                    <button
+                     (click)="addCantidad(p)"
+                    class="text-gray-600 hover:text-gray-900">
+                      <svg class="h-5 w-5 text-gray-600"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <line x1="12" y1="5" x2="12" y2="19" />  <line x1="5" y1="12" x2="19" y2="12" /></svg>
+                    </button>
+                </td>
+                
+                <td class="px-3 py-1 whitespace-nowrap text-sm">
+                  <input name="price" [(ngModel)]="p.price"  class="bg-gray-100 w-16 text-sm" type="number"  >
+                </td>
+                <th scope="col" class="px-3 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                 
+                  <input name="descuento" [(ngModel)]="p.descuento"    type="number" class="bg-gray-100 w-16 text-sm" >
+                  <button (click)="descuentoPrecio(p)" class="text-fuchsia-600 text-sm" ><i class="far fa-check-circle"></i></button>
+                  
+                </th>
+                <td class="px-3 py-1 whitespace-nowrap text-sm">
+                  {{p.quantity*p.price}}
+                </td>
+               
+                
+                <td class="px-3 py-1 whitespace-nowrap text-sm">
+                  <button
+                    class="inline-block mr-2 rounded-full border bg-green-200 hover:bg-green-400 p-3 text-green-600 hover:text-green-900 focus:relative"
+                    title="Agregar Product"
+                  >
+                  <svg class="h-5 w-5"  width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">  <path stroke="none" d="M0 0h24v24H0z"/>  <circle cx="9" cy="19" r="2" />  <circle cx="17" cy="19" r="2" />  <path d="M3 3h2l2 12a3 3 0 0 0 3 2h7a3 3 0 0 0 3 -2l1 -7h-15.2" /></svg>
+                  </button>
+                  <button
+                  (click)="removeProductCar(p)"
+                    class="inline-block rounded-full border bg-red-200 hover:bg-red-400 p-3 text-red-600 hover:text-red-900 focus:relative"
+                    title="Delete Product"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="2.4"
+                      stroke="currentColor"
+                      class="h-5 w-5"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                      />
+                    </svg>
+                  </button>
+                </td>
+
+            </tr>
+            }
+            
+            
+
+
+          
+          </tbody>
+        </table>
+
+      </div>
+
+     
+      <div class="flex justify-between items-center mb-4">
+          <div class="flex items-center space-x-2">
           </div>
+
+          <div class="text-lg font-semibold text-gray-700 mb-2">Total Venta: S/. {{total+(total*0.18) }}</div>
+
+
       </div>
 
 
-      <div class="">
-        <button class="mr-3 px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-700">Realizar Venta</button>
-        <button class="px-4 py-2 bg-red-500 text-white rounded-md shadow-sm hover:bg-red-700">Cancelar Venta</button>
-      </div>
+      
+
+    
+
     </div>
 
 
+
+    <!-- Resumen de venta -->
+    <div class="w-[430px] posi mt-16 p-4 border border-gray-300 bg-blue-50 rounded shadow-lg">
+
+        <h2 class="text-lg font-semibold mb-4">Total Venta: S/. {{total+(total*0.18) }}</h2>
+
+        <div class="grid grid-cols-2 gap-4 mb-4">
+          <div>
+              <label class="text-sm font-medium text-gray-700">Serie</label>
+              <input type="text" readonly formControlName="serie"  class="mt-1 px-2 py-1 w-full rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+          <div>
+              <label class="text-sm font-medium text-gray-700">Nro Venta</label>
+              <input 
+              readonly
+              formControlName="number"
+              type="text"  class="mt-1 px-2 py-1 w-full rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          </div>
+        </div>
+
+        <div class="mb-2">
+          <label class="text-sm font-medium text-gray-700">Condición de Pago</label>
+          <select
+           formControlName="type_payment"
+          (change)="tipoPagoSeleccionado($event)"
+          class="mt-1 px-2 py-1 w-full rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+            @for (item of tipoPago; track $index) {
+              <option [value]="item.id" >{{item.name}}</option>
+            }
+              
+
+          </select>
+        </div>
+
+      @if (tipoPagoID==0) {
+
+      }
+
+        <div class="overflow-auto  max-w-full max-h-60 mb-4">
+
+          <!-- CONTADO -->
+          <table class="overflow-auto min-w-full divide-y w-full mb-2">
+            <thead>
+                <tr>
+                    <th scope="col" class="py-2 text-left text-sm font-medium tracking-wider text-gray-700">Método de Pago</th>
+                    <th scope="col" class="py-2 text-left text-sm font-medium tracking-wider text-gray-700">Monto</th>
+                     <th scope="col" class="py-2 text-left text-sm font-medium tracking-wider">Fecha</th>
+                    <th scope="col" class="py-2 text-left text-sm font-medium tracking-wider"></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+                
+              
+              @for (p of payments; track $index) {
+              <tr ngForm>
+                <td class="whitespace-nowrap text-sm">
+                  <select
+                  name="metodo"
+                [(ngModel)]="p.metodo"
+                  class="mt-1 px-2 py-1 w-24 rounded-md border border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                  @for (item of metodoPago; track $index;) {
+                    <option [value]="item.id" >{{item.name}}</option>
+                  }
+                  </select>
+                </td>
+                <td class="whitespace-nowrap text-sm">
+                  <input 
+                    name="monto"
+                  [(ngModel)]="p.monto"
+                  type="text"  class="mt-1 px-2 py-1 w-16 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </td>
+
+                @if (tipoPagoID==0) {
+                  <td class="whitespace-nowrap text-sm">
+                    <label
+                     
+                    type="date" class="mt-1 px-2 py-1 w-24 text-sm bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{fechaHoy}}</label>
+                  </td>
+                }
+
+                
+                @if (tipoPagoID==1) {
+                  <td class="whitespace-nowrap text-sm">
+                    <label
+                      
+                    type="date" class="mt-1 px-2 py-1 w-24 text-sm bg-white rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{fechaCredito}}</label>
+                  </td>
+                }
+
+
+                @if (tipoPagoID==2) {
+                <td class="whitespace-nowrap text-sm">
+                  <input
+                    name="fecha"
+                  [(ngModel)]="p.fecha"
+                  type="date" class="mt-1 px-2 py-1 w-24 rounded-md border border-gray-300 shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                </td>
+              }
+
+
+                <td class="whitespace-nowrap px-2">
+                  <button
+                  (click)="deletePago($index)"
+                    class="mt-1 flex items-center px-2 py-1 bg-red-500 text-white font-medium rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-300">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            }
+        
+          </tbody>
+          </table>
+
+      
+
+          @if (tipoPagoID!=1) {
+            <div class="whitespace-nowrap text-sm">
+              <button
+              (click)="addPago()"
+                class="flex items-center px-2 py-1 bg-blue-500 text-white font-medium rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          }
+         
+
+        </div>
+
+
+
+
+
+
+
+        <div class="bg-white p-4 rounded border border-gray-300 shadow-sm">
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700">OP Gravada:</span>
+                <span class="text-sm text-gray-900">S/. {{total}}</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-red-700">Vuelto:</span>
+                <span class="text-sm text-red-700">S/. 0.00</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700">SUBTOTAL:</span>
+                <span class="text-sm text-gray-900">S/. 26.49</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span class="text-sm font-medium text-gray-700">IGV (18%):</span>
+                <span class="text-sm text-gray-900">S/. {{total*0.18}}</span>
+            </div>
+            <div class="flex justify-between">
+                <span class="text-sm font-medium text-gray-700">TOTAL:</span>
+                <span class="text-sm text-gray-900">S/. {{total}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- text-right col-end-4 -->
+    <div class="mt-4 ">
+      <button (click)="registrarVenta()" class="mr-3 px-4 py-2 bg-blue-500 text-white rounded-md shadow-sm hover:bg-blue-700">Realizar Venta</button>
+      <button class="px-4 py-2 bg-red-500 text-white rounded-md shadow-sm hover:bg-red-700">Cancelar Venta</button>
+    </div>
+  </div>
+
+
+</div>
+
+
+<div class="fixed inset-0 flex items-center justify-center z-50" *ngIf="isVisible">
+  <div class="fixed inset-0 bg-black opacity-50"></div>
+  <div class="relative bg-white rounded-lg shadow-lg p-4 z-50">
+    <button
+      class="absolute top-2 right-2 bg-red-500 text-white rounded-full w-8 h-8 flex items-center justify-center"
+      (click)="closeModal()"
+    >
+      X
+    </button>
+  <app-customer-register></app-customer-register>
+  </div>
 </div>

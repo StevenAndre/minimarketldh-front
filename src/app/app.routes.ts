@@ -27,13 +27,17 @@ import { RegistrarCompraComponent } from './components/dashboards/compras/regist
 import { PedidosComponent } from './components/dashboards/pedidos/pedidos.component';
 import { CajaComponent } from './components/dashboards/caja/caja.component';
 import { InventarioComponent } from './components/dashboards/inventario/inventario.component';
+import { authGuardGuard } from './guards/auth-guard.guard';
+import { userGuard } from './guards/user.guard';
+import { AperturaComponent } from './components/dashboards/apertura/apertura.component';
+import { AperturaListComponent } from './components/dashboards/apertura-list/apertura-list.component';
 
 export const routes: Routes = [
     {path:'',component:HomeComponent},
-    {path:'login',component:LoginComponent},
+    {path:'login',component:LoginComponent,canActivate:[authGuardGuard]},
     {path:'forget',component:ForgetpasswComponent},
     {path:'register',component:RegiterComponent},
-    {path:'dashboard',component:MainpageComponent,children:[
+    {path:'dashboard',component:MainpageComponent,canActivateChild:[userGuard] ,children:[
         {path:'admin-dashboard',component:AdminDashboardComponent,children:[
             {path:'register-user',component:UserRegisterComponent},
             {path:'list-users',component:ListUsersComponent},
@@ -53,6 +57,8 @@ export const routes: Routes = [
             {path:'pedidos',component:PedidosComponent},
             {path:'inventario',component:InventarioComponent},
             {path:'caja',component:CajaComponent},
+            {path:'apertura',component:AperturaComponent},
+            {path:'lista-aperturas',component:AperturaListComponent},
         ]},
         {path:'user-dashboard',component:UserDashboardComponent},
         {path:'cajero-dashboard',component:CajeroDashboardComponent},

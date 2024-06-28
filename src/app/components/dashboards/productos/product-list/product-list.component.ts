@@ -243,6 +243,10 @@ export interface Product {
   image: string;
   pathImage:string;
   price: number;
+  new_prive:number;
+  stock:number;
+  discount:number;
+  hasPromotion:boolean;
   category: any;
   brand: any;
   unit: any;

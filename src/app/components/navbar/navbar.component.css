@@ -7,6 +7,7 @@
     padding: 10px 20px;
   }
   
+
   .logo a {
     font-size: 1.5rem;
     font-weight: bold;
@@ -42,3 +43,27 @@
   .nav-links li a:hover {
     color: #f8b400;
   }
+
+  .user{
+    margin-left: 30px;
+  }
+
+
+
+  .user i{
+    margin-right: 5px;
+  }
+
+  .logout{
+    margin-left: 10px;
+  }
+
+  .logout button i {
+    font-size: 24px; /* Tamaño del ícono */
+    color: red; /* Color del ícono */
+  }
+
+  .user:hover{
+    color: rgb(162, 21, 122);
+  }
+

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
@@ -14,4 +14,10 @@ import { SpinnerComponent } from './components/spinner/spinner.component';
 })
 export class AppComponent {
   title = 'minimarket-ldh';
+
+  // @HostListener('window:beforeunload', ['$event'])
+  // clearLocalStorage(event: Event): void {
+  // localStorage.clear();
+  // }
+
 }

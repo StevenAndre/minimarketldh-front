@@ -50,7 +50,21 @@ export class LoginComponent {
         this.loginReques=new loginDTO();
         console.log(data);
         this.loginser.saveToken(data.token);
+        this.loginser.loged=true;
+        this.loginser.getCurrentuser().subscribe({
+          next:(user)=>{
+            this.loginser.saveUser(user);
+            
+            console.log(user);
+          },error:err=>{
+            Swal.fire('Error de autenticación','Correo o contraseña incorrectas, vuelve a intentarlo!!','error');
+            console.log(err);
+          }
+        });
+
+
         this.router.navigate(['/dashboard/admin-dashboard/main']);
+        
       },
       error: (error) => {
         console.log(error);
