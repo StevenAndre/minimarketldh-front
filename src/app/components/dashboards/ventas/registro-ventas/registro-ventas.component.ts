@@ -697,6 +697,7 @@ export class RegistroVentasComponent implements OnInit {
       }
   };
 
+  
   this.sunatServ.enviarDatasunat(this.factura);
 
     console.log("IMPRIMEINDO DATA PA VENTA  SUNAT:"+JSON.stringify( this.factura));
